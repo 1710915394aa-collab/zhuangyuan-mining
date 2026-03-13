@@ -1,344 +1,168 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>涓簮绉戞妧 - 涓撲笟姣旂壒甯佺熆鏈洪攢鍞?/title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: #1a1a2e;
-            color: white;
-            padding: 20px 0;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 28px;
-        }
-
-        header nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 30px;
-            transition: color 0.3s;
-        }
-
-        header nav a:hover {
-            color: #4ade80;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        #home {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-            text-align: center;
-        }
-
-        #home h2 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        #home p {
-            font-size: 18px;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        #products h2, #services h2, #about h2, #contact h2 {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-            color: #1a1a2e;
-        }
-
-        .product-grid, .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card, .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .product-card:hover, .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        .product-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .hashrate {
-            font-size: 32px;
-            color: #4ade80;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .price {
-            font-size: 24px;
-            color: #1a1a2e;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .service-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: #1a1a2e;
-        }
-
-        .service-card p {
-            color: #666;
-        }
-
-        #about p {
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        #contact {
-            background: white;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            color: #1a1a2e;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74, 222, 128, 0.4);
-        }
-
-        footer {
-            background: #1a1a2e;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 80px;
-        }
-
-        @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            header nav a {
-                margin: 0 15px;
-            }
-
-            #home h2 {
-                font-size: 32px;
-            }
-
-            #products h2, #services h2, #about h2, #contact h2 {
-                font-size: 28px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中原科技 - 专业比特币矿机销售</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.6;color:#333;background:#f5f5f5}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    header{background:#1a1a2e;color:#fff;padding:20px 0;position:sticky;top:0;z-index:10}
+    header .container{display:flex;justify-content:space-between;align-items:center}
+    header h1{font-size:28px}
+    header nav a{color:#fff;text-decoration:none;margin-left:30px;transition:color .3s}
+    header nav a:hover{color:#4ade80}
+    section{padding:80px 0}
+    #home{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:#fff;text-align:center}
+    #home h2{font-size:3.2rem;margin-bottom:20px;background:linear-gradient(135deg,#4ade80 0%,#22c55e 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    #home p{font-size:18px;margin-bottom:40px;opacity:.9}
+    #products h2,#services h2,#about h2,#contact h2{text-align:center;font-size:36px;margin-bottom:50px;color:#1a1a2e}
+    .product-grid,.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+    .product-card,.service-card{background:#fff;padding:30px;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,.1);text-align:center;transition:all .3s ease;border:1px solid rgba(0,0,0,.05)}
+    .product-card:hover,.service-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.15)}
+    .product-card h3{font-size:20px;margin-bottom:15px}
+    .hashrate{font-size:32px;color:#4ade80;font-weight:700;margin-bottom:15px}
+    .price{font-size:24px;color:#1a1a2e;margin-bottom:20px;font-weight:700}
+    .service-card h3{font-size:20px;margin-bottom:15px;color:#1a1a2e}
+    .service-card p{color:#666}
+    #about p{font-size:18px;line-height:1.8;margin-bottom:20px;color:#555}
+    #contact{background:#fff}
+    .contact-form{max-width:600px;margin:0 auto}
+    .contact-form input,.contact-form textarea{width:100%;padding:15px;margin-bottom:20px;border:1px solid #ddd;border-radius:5px;font-size:16px}
+    .contact-form textarea{resize:vertical}
+    .btn{display:inline-block;background:linear-gradient(135deg,#4ade80 0%,#22c55e 100%);color:#1a1a2e;padding:15px 40px;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 15px rgba(74,222,128,.3)}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(74,222,128,.4)}
+    footer{background:#1a1a2e;color:#fff;text-align:center;padding:20px 0;margin-top:80px}
+    @media(max-width:768px){header .container{flex-direction:column;gap:15px}header nav a{margin:0 15px}#home h2{font-size:32px}#products h2,#services h2,#about h2,#contact h2{font-size:28px}}
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>涓簮绉戞妧</h1>
-            <nav>
-                <a href="#home">棣栭〉</a>
-                <a href="#products">鐭挎満浜у搧</a>
-                <a href="#services">鏈嶅姟鏀寔</a>
-                <a href="#about">鍏充簬鎴戜滑</a>
-                <a href="#contact">鑱旂郴鎴戜滑</a>
-            </nav>
+  <header>
+    <div class="container">
+      <h1>中原科技</h1>
+      <nav>
+        <a href="#home">首页</a>
+        <a href="#products">矿机产品</a>
+        <a href="#services">服务支持</a>
+        <a href="#about">关于我们</a>
+        <a href="#contact">联系我们</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home">
+    <div class="container">
+      <h2>专业比特币矿机解决方案</h2>
+      <p>中原科技提供高性能矿机销售、安装部署、运维服务，助您高效挖矿</p>
+      <a href="#products" class="btn">查看产品</a>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="container">
+      <h2>热门矿机</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>蚂蚁 S19 XP</h3>
+          <p class="hashrate">140 TH/s</p>
+          <p class="price">¥ 42,000</p>
+          <button class="btn">立即购买</button>
         </div>
-    </header>
-
-    <section id="home">
-        <div class="container">
-            <h2>涓撲笟姣旂壒甯佺熆鏈鸿В鍐虫柟妗?/h2>
-            <p>涓簮绉戞妧鎻愪緵楂樻€ц兘鐭挎満閿€鍞€佸畨瑁呴儴缃层€佽繍缁存湇鍔★紝鍔╂偍楂樻晥鎸栫熆</p>
-            <a href="#products" class="btn">鏌ョ湅浜у搧</a>
+        <div class="product-card">
+          <h3>蚂蚁 S19 Pro</h3>
+          <p class="hashrate">110 TH/s</p>
+          <p class="price">¥ 32,000</p>
+          <button class="btn">立即购买</button>
         </div>
-    </section>
-
-    <section id="products">
-        <div class="container">
-            <h2>鐑棬鐭挎満</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <h3>铓傝殎S19 XP</h3>
-                    <p class="hashrate">140 TH/s</p>
-                    <p class="price">楼 42,000</p>
-                    <button class="btn">绔嬪嵆璐拱</button>
-                </div>
-                <div class="product-card">
-                    <h3>铓傝殎S19 Pro</h3>
-                    <p class="hashrate">110 TH/s</p>
-                    <p class="price">楼 32,000</p>
-                    <button class="btn">绔嬪嵆璐拱</button>
-                </div>
-                <div class="product-card">
-                    <h3>铓傝殎M30S</h3>
-                    <p class="hashrate">112 TH/s</p>
-                    <p class="price">楼 30,000</p>
-                    <button class="btn">绔嬪嵆璐拱</button>
-                </div>
-                <div class="product-card">
-                    <h3>铓傝殎M31</h3>
-                    <p class="hashrate">112 TH/s</p>
-                    <p class="price">楼 28,000</p>
-                    <button class="btn">绔嬪嵆璐拱</button>
-                </div>
-            </div>
+        <div class="product-card">
+          <h3>蚂蚁 M30S</h3>
+          <p class="hashrate">112 TH/s</p>
+          <p class="price">¥ 30,000</p>
+          <button class="btn">立即购买</button>
         </div>
-    </section>
-
-    <section id="services">
-        <div class="container">
-            <h2>鎴戜滑鐨勬湇鍔?/h2>
-            <div class="service-grid">
-                <div class="service-card">
-                    <h3>涓撲笟瀹夎</h3>
-                    <p>缁忛獙涓板瘜鐨勫伐绋嬪笀涓婇棬瀹夎閮ㄧ讲</p>
-                </div>
-                <div class="service-card">
-                    <h3>杩愮淮鐩戞帶</h3>
-                    <p>7脳24灏忔椂瀹炴椂鐩戞帶锛岀‘淇濈熆鏈虹ǔ瀹氳繍琛?/p>
-                </div>
-                <div class="service-card">
-                    <h3>鎶€鏈敮鎸?/h3>
-                    <p>涓撲笟鎶€鏈洟闃熸彁渚涘叏鏂逛綅鎶€鏈敮鎸?/p>
-                </div>
-                <div class="service-card">
-                    <h3>鍞悗淇濋殰</h3>
-                    <p>瀹屽杽鐨勫敭鍚庢湇鍔′綋绯伙紝璁╂偍鏃犲悗椤句箣蹇?/p>
-                </div>
-            </div>
+        <div class="product-card">
+          <h3>蚂蚁 M31</h3>
+          <p class="hashrate">112 TH/s</p>
+          <p class="price">¥ 28,000</p>
+          <button class="btn">立即购买</button>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="about">
-        <div class="container">
-            <h2>鍏充簬涓簮绉戞妧</h2>
-            <p>涓簮绉戞妧鏄竴瀹朵笓娉ㄤ簬姣旂壒甯佹寲鐭胯澶囬攢鍞笌鏈嶅姟鐨勯珮鏂版妧鏈紒涓氥€傛垜浠嚧鍔涗簬涓哄叏鐞冪熆宸ユ彁渚涢珮鎬ц兘銆侀珮鎬т环姣旂殑鐭挎満浜у搧鍜屼笓涓氱殑鎶€鏈敮鎸併€?/p>
-            <p>鎴戜滑鐨勪娇鍛芥槸锛氳姣忎釜浜洪兘鑳借交鏉惧弬涓庢瘮鐗瑰竵鎸栫熆锛屽叡浜暟瀛楄揣甯佸彂灞曠殑绾㈠埄銆?/p>
+  <section id="services">
+    <div class="container">
+      <h2>我们的服务</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>专业安装</h3>
+          <p>经验丰富的工程师上门安装部署</p>
         </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2>鑱旂郴鎴戜滑</h2>
-            <div style="text-align: center; margin-bottom: 40px;">
-              <p><strong>馃摓 鐢佃瘽锛?/strong><a href="tel:13674067667" style="color:#4ade80; text-decoration:none;">13674067667</a></p>
-              <p><strong>鉁夛笍 閭锛?/strong><a href="mailto:1710915394@qq.com" style="color:#4ade80; text-decoration:none;">1710915394@qq.com</a></p>
-              <p><strong>馃懁 鑱旂郴浜猴細</strong>Jack</p>
-            </div>
-            <form class="contact-form">
-                <input type="text" placeholder="鎮ㄧ殑濮撳悕" required>
-                <input type="email" placeholder="鐢靛瓙閭" required>
-                <input type="tel" placeholder="鑱旂郴鐢佃瘽" required>
-                <textarea placeholder="鐣欒█鍐呭" rows="5" required></textarea>
-                <button type="submit" class="btn">鎻愪氦</button>
-            </form>
+        <div class="service-card">
+          <h3>运维监控</h3>
+          <p>7×24 小时实时监控，确保矿机稳定运行</p>
         </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 涓簮绉戞妧 鐗堟潈鎵€鏈?/p>
+        <div class="service-card">
+          <h3>技术支持</h3>
+          <p>专业技术团队提供全方位技术支持</p>
         </div>
-    </footer>
+        <div class="service-card">
+          <h3>售后保障</h3>
+          <p>完善的售后服务体系，让您无后顾之忧</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // 琛ㄥ崟鎻愪氦鍔熻兘
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('鎰熻阿鎮ㄧ殑鐣欒█锛佹垜浠細灏藉揩鑱旂郴鎮ㄣ€?);
-            this.reset();
-        });
+  <section id="about">
+    <div class="container">
+      <h2>关于中原科技</h2>
+      <p>中原科技是一家专注于比特币挖矿设备销售与服务的高新技术企业。我们致力于为全球矿工提供高性能、高性价比的矿机产品和专业的技术支持。</p>
+      <p>我们的使命是：让每个人都能轻松参与比特币挖矿，共享数字货币发展的红利。</p>
+    </div>
+  </section>
 
-        // 瀵艰埅鏍忔粴鍔ㄦ晥鏋?        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(26, 26, 46, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = '#1a1a2e';
-                header.style.backdropFilter = 'none';
-            }
-        });
-    </script>
+  <section id="contact">
+    <div class="container">
+      <h2>联系我们</h2>
+      <div style="text-align:center;margin-bottom:40px;">
+        <p><strong>电话：</strong><a href="tel:13674067667" style="color:#4ade80;text-decoration:none;">13674067667</a></p>
+        <p><strong>邮箱：</strong><a href="mailto:1710915394@qq.com" style="color:#4ade80;text-decoration:none;">1710915394@qq.com</a></p>
+        <p><strong>联系人：</strong>Jack</p>
+      </div>
+      <form class="contact-form">
+        <input type="text" placeholder="您的姓名" required>
+        <input type="email" placeholder="电子邮箱" required>
+        <input type="tel" placeholder="联系电话" required>
+        <textarea placeholder="留言内容" rows="5" required></textarea>
+        <button type="submit" class="btn">提交</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 中原科技 版权所有</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('感谢您的留言！我们会尽快联系您。');
+      this.reset();
+    });
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(26, 26, 46, 0.95)';
+        header.style.backdropFilter = 'blur(10px)';
+      } else {
+        header.style.background = '#1a1a2e';
+        header.style.backdropFilter = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
-\n<!-- build: 20260313-185955 -->\n
