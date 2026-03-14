@@ -1,4 +1,4 @@
-﻿* {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -188,5 +188,20 @@ footer {
         font-size: 28px;
     }
 }
-\n\n#prices .note{color:#666;text-align:center;margin:-20px 0 30px;}\n.price-table{background:#fff;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,.08);overflow:hidden;}\n.price-table .row{display:grid;grid-template-columns:120px 1fr 120px;border-bottom:1px solid #eee;padding:12px 16px;font-size:15px;}\n.price-table .row.head{background:#1a1a2e;color:#fff;font-weight:700;}\n.price-table .row:last-child{border-bottom:none;}\n@media(max-width:600px){.price-table .row{grid-template-columns:90px 1fr 90px;font-size:13px;}}\n
-\n.price-img{width:64px;height:64px;object-fit:contain;margin-right:10px;vertical-align:middle;border-radius:6px;background:#f3f5f7;padding:4px;}\n
+
+
+/* price list grid */
+.price-table{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:16px;background:transparent;box-shadow:none}
+.price-table .row{display:block;border:1px solid #eee;border-radius:12px;background:#fff;padding:14px}
+.price-table .row.head{display:none}
+.price-table .row div{margin:6px 0}
+.price-table .row div:nth-child(1){font-size:12px;color:#888}
+.price-table .row div:nth-child(2){font-weight:600}
+.price-table .row div:nth-child(3){color:#1a1a2e;font-weight:700}
+.price-img{width:100%;height:160px;object-fit:contain;background:#f3f5f7;border-radius:8px;padding:8px;margin:6px 0}
+@media(max-width:900px){.price-table{grid-template-columns:repeat(2,minmax(200px,1fr))}}
+@media(max-width:600px){.price-table{grid-template-columns:1fr}}
+
+
+
+
