@@ -188,20 +188,3 @@ footer {
         font-size: 28px;
     }
 }
-
-
-/* price list grid */
-.price-table{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:16px;background:transparent;box-shadow:none}
-.price-table .row{display:block;border:1px solid #eee;border-radius:12px;background:#fff;padding:14px}
-.price-table .row.head{display:none}
-.price-table .row div{margin:6px 0}
-.price-table .row div:nth-child(1){font-size:12px;color:#888}
-.price-table .row div:nth-child(2){font-weight:600}
-.price-table .row div:nth-child(3){color:#1a1a2e;font-weight:700}
-.price-img{width:100%;height:160px;object-fit:contain;background:#f3f5f7;border-radius:8px;padding:8px;margin:6px 0}
-@media(max-width:900px){.price-table{grid-template-columns:repeat(2,minmax(200px,1fr))}}
-@media(max-width:600px){.price-table{grid-template-columns:1fr}}
-
-
-
-
