@@ -1,8 +1,12 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://zhuangyuan-mining.vercel.app/">
+  <meta name="description" content="Zhuangyuan Mining provides stock S19/S21/T21 miners, turnkey hosting, deployment, and 24/7 operations support from Shenzhen.">
+  <link rel="preconnect" href="https://res.cloudinary.com">
+  <link rel="preconnect" href="https://wa.me">
   <title>中原科技 - 比特币矿机与托管</title>
   <style>
     :root {
@@ -75,6 +79,48 @@
     .pay-card h4{margin:8px 0 4px;font-size:15px;color:var(--dark)}
     .pay-card p{color:var(--muted);font-size:13px;line-height:1.5;word-break:break-all}
     @media(max-width:768px){header .container{flex-direction:column;align-items:flex-start}#home h2{font-size:34px}nav{gap:14px}}
+    .buy-btn{width:100%;margin-top:10px}
+    .checkout-modal{max-width:1100px;max-height:min(92vh,920px);overflow:auto}
+    .checkout-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:18px}
+    .checkout-step{padding:14px 16px;border-radius:14px;border:1px solid #e2e8f0;background:#f8fafc;color:var(--muted)}
+    .checkout-step.active{background:#ecfdf5;border-color:rgba(34,197,94,.35);color:#14532d}
+    .checkout-step.done{background:#f0fdf4;border-color:rgba(22,163,74,.28)}
+    .checkout-step strong{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--dark);margin-bottom:4px}
+    .step-dot{width:28px;height:28px;border-radius:999px;display:grid;place-items:center;background:#fff;border:1px solid #dbe4ef;font-size:12px;font-weight:800}
+    .checkout-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+    .checkout-panel,.summary-panel{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:18px}
+    .checkout-panel h3,.summary-panel h3{font-size:20px;margin-bottom:8px}
+    .checkout-panel p,.summary-panel p{color:var(--muted)}
+    .checkout-form{display:grid;gap:14px;margin-top:18px}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .field{display:grid;gap:8px}
+    .field label{font-size:13px;font-weight:700;color:#334155}
+    .field input,.field textarea{width:100%;padding:13px 14px;border:1px solid #d9e0eb;border-radius:12px;font-size:14px;background:#fff}
+    .field textarea{min-height:96px;resize:vertical}
+    .option-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .option-card{border:1px solid #d9e0eb;border-radius:12px;padding:14px;background:#fff;cursor:pointer;transition:.2s}
+    .option-card.active{border-color:var(--green);box-shadow:0 0 0 3px rgba(34,197,94,.12)}
+    .option-card strong{display:block;margin-bottom:4px}
+    .checkout-actions{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .summary-block{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+    .summary-item{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center}
+    .summary-thumb{width:72px;height:72px;border-radius:14px;background:linear-gradient(135deg,#d1fae5,#ecfccb);display:grid;place-items:center;font-size:28px;font-weight:800;color:#166534}
+    .summary-item h4{font-size:17px;margin-bottom:4px}
+    .summary-item span{font-size:13px;color:var(--muted)}
+    .summary-price{font-size:20px;font-weight:800;color:var(--dark)}
+    .summary-list{display:grid;gap:10px;margin-top:14px}
+    .summary-line{display:flex;justify-content:space-between;gap:12px;color:#475569}
+    .summary-line.total{padding-top:12px;border-top:1px solid #e2e8f0;font-size:19px;font-weight:800;color:var(--dark)}
+    .address-preview,.helper-box,.success-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+    .address-preview{display:grid;gap:6px}
+    .helper-box{color:#92400e;background:#fff7ed;border-color:#fed7aa}
+    .payment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+    .payment-method{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px}
+    .payment-method img{width:100%;height:190px;object-fit:contain;background:#f8fafc;border-radius:10px;margin:10px 0}
+    .wallet{font-size:13px;color:var(--muted);word-break:break-all}
+    .success-box{text-align:center;display:grid;gap:12px;background:linear-gradient(180deg,#f0fdf4,#fff)}
+    .success-mark{width:68px;height:68px;border-radius:999px;margin:0 auto;display:grid;place-items:center;background:rgba(34,197,94,.15);color:#16a34a;font-size:32px;font-weight:800}
+    @media(max-width:768px){header .container{flex-direction:column;align-items:flex-start}#home h2{font-size:34px}nav{gap:14px}.checkout-steps,.checkout-layout,.form-grid,.option-row,.payment-grid{grid-template-columns:1fr}.summary-item{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -251,6 +297,16 @@
     </div>
   </div>
 
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal checkout-modal">
+      <div class="modal-header">
+        <div class="modal-title" id="checkout-title">订单结算</div>
+        <button class="modal-close" id="checkout-close" aria-label="关闭">×</button>
+      </div>
+      <div id="checkout-content"></div>
+    </div>
+  </div>
+
   <script>
     const products = [
       { name: "蚂蚁 S21 200T", hashrate: "200 TH/s", price: "785 USDT" },
@@ -358,12 +414,6 @@
         const card=document.createElement('div');
         card.className='card product-card';
         card.innerHTML=`<h3>${item.name}</h3><p class="hashrate">${item.hashrate}</p><p class="price">${item.price}</p>`;
-        const btn=document.createElement('button');
-        btn.className='btn pay-trigger';
-        btn.setAttribute('data-i18n','btn_buy');
-        btn.textContent='立即购买';
-        btn.onclick = openPay;
-        card.appendChild(btn);
         wrap.appendChild(card);
       });
     }
@@ -376,10 +426,10 @@
         row.className='row';
         row.innerHTML=`<div>${item.coin}</div><div><img class="price-img" src="${item.img}" alt="${item.model}">${item.model}</div><div>${item.price}</div>`;
         const btn=document.createElement('button');
-        btn.className='btn pay-trigger';
+        btn.className='btn buy-btn';
         btn.setAttribute('data-i18n','btn_buy');
         btn.textContent='立即购买';
-        btn.onclick = openPay;
+        btn.onclick = null;
         row.appendChild(btn);
         wrap.appendChild(row);
       });
@@ -414,9 +464,6 @@
       const contactClose=document.getElementById('contact-close');
       const contactBtns=[document.getElementById('contact-open'), document.getElementById('contact-open-2')].filter(Boolean);
 
-      document.addEventListener('click',e=>{
-        if(e.target.classList.contains('pay-trigger')) payModal.classList.add('active');
-      });
       payClose?.addEventListener('click',()=>payModal.classList.remove('active'));
       payModal?.addEventListener('click',e=>{ if(e.target===payModal) payModal.classList.remove('active'); });
 
@@ -451,28 +498,97 @@
     document.addEventListener('DOMContentLoaded', init);
   </script>
 
-  <script>
-    // 兜底事件：确保热门矿机与价格表按钮点击必弹支付弹窗
+
+<script>
     (() => {
-      const openPay = () => {
-        const m = document.getElementById('pay-modal');
-        if (m) m.classList.add('active');
+      const checkoutText = {
+        zh: { btn_buy: '立即购买', checkout_title: '订单结算', step1: '收货地址', step1Desc: '填写收货人与配送信息', step2: '订单支付', step2Desc: '确认订单并完成支付', step3: '提交成功', step3Desc: '保存订单号和付款凭证', infoTitle: '收货信息', infoDesc: '点击立即购买后先填写收货地址，再进入支付，这个流程和你给我的参考页面一致。', name: '收货人姓名', phone: '电话 / WhatsApp', country: '国家 / 地区', city: '城市', address: '详细地址', postal: '邮编', notes: '订单备注', billSame: '账单地址与收货地址一致', billOther: '账单地址不同', shippingTitle: '运输方式', shippingFast: '空运快线', shippingFastDesc: '确认后 5-8 个工作日', shippingStandard: '标准物流', shippingStandardDesc: '10-18 个工作日，运费更低', continuePay: '下一步，去支付', back: '返回修改', paid: '我已完成付款', restart: '继续下单', summary: '订单摘要', shippingFee: '运费', fee: '手续费', total: '订单总额', qty: '数量 1', addressPreview: '配送地址', paymentTitle: '订单支付', paymentDesc: '请按照以下地址付款，付款后将订单号和转账截图发给客服。', helper: '付款后请通过微信或 WhatsApp 发送订单号与截图，我们会尽快核对并安排发货。', successTitle: '订单已提交', successDesc: '收货信息已记录在当前页面中，下一步只需要完成付款并发送付款凭证。', orderNo: '订单号' },
+        en: { btn_buy: 'Buy Now', checkout_title: 'Checkout', step1: 'Shipping Address', step1Desc: 'Fill consignee and delivery information', step2: 'Order Payment', step2Desc: 'Review order and complete payment', step3: 'Submitted', step3Desc: 'Keep order number and payment proof', infoTitle: 'Shipping Information', infoDesc: 'This matches the flow you wanted: click buy now, enter address, then pay the order.', name: 'Full Name', phone: 'Phone / WhatsApp', country: 'Country / Region', city: 'City', address: 'Street Address', postal: 'Postal Code', notes: 'Order Notes', billSame: 'Billing address same as shipping', billOther: 'Use another billing address', shippingTitle: 'Shipping Method', shippingFast: 'Express Air Freight', shippingFastDesc: '5-8 working days after confirmation', shippingStandard: 'Standard Logistics', shippingStandardDesc: '10-18 working days with lower freight', continuePay: 'Continue to payment', back: 'Back', paid: 'I have paid', restart: 'Create another order', summary: 'Order Summary', shippingFee: 'Shipping', fee: 'Handling', total: 'Total', qty: 'Qty 1', addressPreview: 'Delivery Address', paymentTitle: 'Order Payment', paymentDesc: 'Pay to one of the addresses below, then send the order number and transfer screenshot to customer service.', helper: 'After payment, please contact us on WeChat or WhatsApp with your order number and screenshot so we can arrange shipment quickly.', successTitle: 'Order submitted', successDesc: 'Shipping information is saved in this page session. Next step: complete payment and send proof.', orderNo: 'Order No.' }
       };
-      document.getElementById('product-grid')?.addEventListener('click', e => {
-        if (e.target.closest('button')) {
+      const state = { step: 1, billingSame: true, shippingMethod: 'fast', product: null, address: null, orderNo: '' };
+      const t = (key) => (checkoutText[localStorage.getItem('lang') || 'zh'] || checkoutText.zh)[key] || key;
+      const money = (n) => `${Number(n).toFixed(2)} USDT`;
+      const num = (value) => Number(String(value).replace(/[^\d.]/g, '')) || 0;
+      const orderNo = () => `ZY-${Date.now().toString().slice(-8)}`;
+      const open = (id) => document.getElementById(id)?.classList.add('active');
+      const close = (id) => document.getElementById(id)?.classList.remove('active');
+      const productFromRow = (title, sub, price) => ({ title, sub, price: num(price), icon: (title || 'M').trim().charAt(0).toUpperCase() });
+      function injectBuyButtons() {
+        document.querySelectorAll('#product-grid .product-card').forEach((card) => {
+          if (card.querySelector('.buy-btn')) return;
+          const title = card.querySelector('h3')?.textContent?.trim() || 'Miner';
+          const sub = card.querySelector('.hashrate')?.textContent?.trim() || 'ASIC Miner';
+          const price = card.querySelector('.price')?.textContent?.trim() || '0';
+          const btn = document.createElement('button');
+          btn.className = 'btn buy-btn';
+          btn.type = 'button';
+          btn.textContent = t('btn_buy');
+          btn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); openCheckout(productFromRow(title, sub, price)); });
+          card.appendChild(btn);
+        });
+        document.querySelectorAll('#price-table .row').forEach((row) => {
+          const cells = row.querySelectorAll('div');
+          const title = cells[1]?.textContent?.trim() || 'Miner';
+          const sub = cells[0]?.textContent?.trim() || 'ASIC Miner';
+          const price = cells[2]?.textContent?.trim() || '0';
+          let btn = row.querySelector('button');
+          if (!btn) {
+            btn = document.createElement('button');
+            btn.type = 'button';
+            row.appendChild(btn);
+          }
+          btn.className = 'btn buy-btn';
+          btn.textContent = t('btn_buy');
+          btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); openCheckout(productFromRow(title, sub, price)); };
+        });
+      }
+      function addressPreview() {
+        if (!state.address) return '';
+        return `<div class="address-preview"><strong>${t('addressPreview')}</strong><div>${state.address.name} / ${state.address.phone}</div><div>${state.address.country} ${state.address.city} ${state.address.postal}</div><div>${state.address.address}</div><div>${state.billingSame ? t('billSame') : t('billOther')}</div>${state.address.notes ? `<div>${state.address.notes}</div>` : ''}</div>`;
+      }
+      function bindCheckoutUi() {
+        document.querySelectorAll('[data-billing]').forEach((btn) => btn.addEventListener('click', () => { state.billingSame = btn.dataset.billing === 'same'; renderCheckout(); }));
+        document.querySelectorAll('[data-shipping]').forEach((btn) => btn.addEventListener('click', () => { state.shippingMethod = btn.dataset.shipping; renderCheckout(); }));
+        document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
           e.preventDefault();
-          openPay();
+          const fd = new FormData(e.currentTarget);
+          state.address = { name: fd.get('name'), phone: fd.get('phone'), country: fd.get('country'), city: fd.get('city'), address: fd.get('address'), postal: fd.get('postal'), notes: fd.get('notes') };
+          state.step = 2;
+          renderCheckout();
+        });
+        document.getElementById('checkout-back')?.addEventListener('click', () => { state.step = 1; renderCheckout(); });
+        document.getElementById('checkout-paid')?.addEventListener('click', () => { state.step = 3; renderCheckout(); });
+        document.getElementById('checkout-restart')?.addEventListener('click', () => { state.step = 1; state.address = null; state.orderNo = orderNo(); close('checkout-modal'); });
+      }
+      function renderCheckout() {
+        const host = document.getElementById('checkout-content');
+        const title = document.getElementById('checkout-title');
+        if (!host || !title || !state.product) return;
+        const shipping = state.shippingMethod === 'fast' ? 120 : 65;
+        const fee = 15;
+        const total = state.product.price + shipping + fee;
+        title.textContent = t('checkout_title');
+        let panel = '';
+        if (state.step === 1) {
+          panel = `<div class="checkout-panel"><h3>${t('infoTitle')}</h3><p>${t('infoDesc')}</p><form class="checkout-form" id="checkout-form"><div class="form-grid"><div class="field"><label>${t('name')}</label><input name="name" required value="${state.address?.name || ''}"></div><div class="field"><label>${t('phone')}</label><input name="phone" required value="${state.address?.phone || ''}"></div><div class="field"><label>${t('country')}</label><input name="country" required value="${state.address?.country || ''}"></div><div class="field"><label>${t('city')}</label><input name="city" required value="${state.address?.city || ''}"></div></div><div class="field"><label>${t('address')}</label><textarea name="address" required>${state.address?.address || ''}</textarea></div><div class="form-grid"><div class="field"><label>${t('postal')}</label><input name="postal" required value="${state.address?.postal || ''}"></div><div class="field"><label>${t('notes')}</label><input name="notes" value="${state.address?.notes || ''}"></div></div><div class="option-row"><button class="option-card ${state.billingSame ? 'active' : ''}" type="button" data-billing="same"><strong>${t('billSame')}</strong><span>${t('step1Desc')}</span></button><button class="option-card ${state.billingSame ? '' : 'active'}" type="button" data-billing="other"><strong>${t('billOther')}</strong><span>${t('step2Desc')}</span></button></div><div class="field"><label>${t('shippingTitle')}</label><div class="option-row"><button class="option-card ${state.shippingMethod === 'fast' ? 'active' : ''}" type="button" data-shipping="fast"><strong>${t('shippingFast')}</strong><span>${t('shippingFastDesc')}</span></button><button class="option-card ${state.shippingMethod === 'standard' ? 'active' : ''}" type="button" data-shipping="standard"><strong>${t('shippingStandard')}</strong><span>${t('shippingStandardDesc')}</span></button></div></div><div class="checkout-actions"><span></span><button class="btn" type="submit">${t('continuePay')}</button></div></form></div>`;
+        } else if (state.step === 2) {
+          panel = `<div class="checkout-panel"><h3>${t('paymentTitle')}</h3><p>${t('paymentDesc')}</p>${addressPreview()}<div class="payment-grid"><div class="payment-method"><strong>USDT (TRX)</strong><img src="pay-trx.jpg" alt="TRX QR"><div class="wallet">TNbfn9MinzULV5tgYMUegBivACxSeKNUTv</div></div><div class="payment-method"><strong>USDT (BSC)</strong><img src="pay-bsc.jpg" alt="BSC QR"><div class="wallet">0x9ef3553baf12f6f28aedc6d72a66e6101447150b</div></div></div><div class="helper-box">${t('helper')}</div><div class="checkout-actions"><button class="btn secondary" type="button" id="checkout-back">${t('back')}</button><button class="btn" type="button" id="checkout-paid">${t('paid')}</button></div></div>`;
+        } else {
+          panel = `<div class="success-box"><div class="success-mark">✓</div><h3>${t('successTitle')}</h3><p>${t('successDesc')}</p><div><strong>${t('orderNo')}:</strong> ${state.orderNo}</div>${addressPreview()}<div class="checkout-actions"><span></span><button class="btn" type="button" id="checkout-restart">${t('restart')}</button></div></div>`;
         }
-      });
-      document.getElementById('price-table')?.addEventListener('click', e => {
-        if (e.target.closest('button')) {
-          e.preventDefault();
-          openPay();
-        }
-      });
+        host.innerHTML = `<div class="checkout-steps"><div class="checkout-step ${state.step === 1 ? 'active' : state.step > 1 ? 'done' : ''}"><strong><span class="step-dot">1</span>${t('step1')}</strong><span>${t('step1Desc')}</span></div><div class="checkout-step ${state.step === 2 ? 'active' : state.step > 2 ? 'done' : ''}"><strong><span class="step-dot">2</span>${t('step2')}</strong><span>${t('step2Desc')}</span></div><div class="checkout-step ${state.step === 3 ? 'active done' : ''}"><strong><span class="step-dot">3</span>${t('step3')}</strong><span>${t('step3Desc')}</span></div></div><div class="checkout-layout">${panel}<div class="summary-panel"><h3>${t('summary')}</h3><div class="summary-block"><div class="summary-item"><div class="summary-thumb">${state.product.icon}</div><div><h4>${state.product.title}</h4><span>${state.product.sub} · ${t('qty')}</span></div><div class="summary-price">${money(state.product.price)}</div></div><div class="summary-list"><div class="summary-line"><span>${t('shippingFee')}</span><span>${money(shipping)}</span></div><div class="summary-line"><span>${t('fee')}</span><span>${money(fee)}</span></div><div class="summary-line total"><span>${t('total')}</span><span>${money(total)}</span></div></div></div><div class="summary-block" style="margin-top:12px"><strong>${t('orderNo')}</strong><p style="margin-top:8px">${state.orderNo}</p></div>${state.step > 1 ? `<div class="summary-block" style="margin-top:12px">${addressPreview()}</div>` : ''}</div></div>`;
+        bindCheckoutUi();
+      }
+      function openCheckout(product) { state.product = product; state.step = 1; state.billingSame = true; state.shippingMethod = 'fast'; state.orderNo = orderNo(); renderCheckout(); open('checkout-modal'); }
+      function initCheckoutEnhancement() {
+        injectBuyButtons();
+        document.getElementById('checkout-close')?.addEventListener('click', () => close('checkout-modal'));
+        document.getElementById('checkout-modal')?.addEventListener('click', (e) => { if (e.target.id === 'checkout-modal') close('checkout-modal'); });
+        document.querySelectorAll('.lang-btn').forEach((btn) => btn.addEventListener('click', () => setTimeout(() => { injectBuyButtons(); if (state.product) renderCheckout(); }, 0)));
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initCheckoutEnhancement); else initCheckoutEnhancement();
     })();
   </script>
-
   <button class="contact-button" aria-label="Contact us" onclick="document.getElementById('contact-modal')?.classList.add('active');">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a1 1 0 0 1 1 1v11.5a1.5 1.5 0 0 1-1.5 1.5H7l-3.5 2.5V5a1 1 0 0 1 1-1Z"/></svg>
     </button>
@@ -518,6 +634,13 @@
   </div>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 
