@@ -479,8 +479,8 @@
       document.querySelectorAll('.lang-btn').forEach(btn=>{
         btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
       });
-      if(!localStorage.getItem('lang')) localStorage.setItem('lang','zh');
-      applyLang(localStorage.getItem('lang') || 'zh');
+      if(!localStorage.getItem('lang')) localStorage.setItem('lang','en');
+      applyLang(localStorage.getItem('lang') || 'en');
     }
 
     function init(){
@@ -515,16 +515,18 @@
       const productFromRow = (title, sub, price) => ({ title, sub, price: num(price), icon: (title || 'M').trim().charAt(0).toUpperCase() });
       function injectBuyButtons() {
         document.querySelectorAll('#product-grid .product-card').forEach((card) => {
-          if (card.querySelector('.buy-btn')) return;
           const title = card.querySelector('h3')?.textContent?.trim() || 'Miner';
           const sub = card.querySelector('.hashrate')?.textContent?.trim() || 'ASIC Miner';
           const price = card.querySelector('.price')?.textContent?.trim() || '0';
-          const btn = document.createElement('button');
-          btn.className = 'btn buy-btn';
-          btn.type = 'button';
+          let btn = card.querySelector('.buy-btn');
+          if (!btn) {
+            btn = document.createElement('button');
+            btn.className = 'btn buy-btn';
+            btn.type = 'button';
+            card.appendChild(btn);
+          }
           btn.textContent = t('btn_buy');
-          btn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); openCheckout(productFromRow(title, sub, price)); });
-          card.appendChild(btn);
+          btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); openCheckout(productFromRow(title, sub, price)); };
         });
         document.querySelectorAll('#price-table .row').forEach((row) => {
           const cells = row.querySelectorAll('div');
@@ -634,6 +636,8 @@
   </div>
 </body>
 </html>
+
+
 
 
 
