@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://zhuangyuan-mining.vercel.app/">
   <meta name="description" content="Zhuangyuan Mining provides stock S19/S21/T21 miners, turnkey hosting, deployment, and 24/7 operations support from Shenzhen.">
+  <meta name="keywords" content="bitcoin mining, mining hosting, ASIC hosting, low cost mining">
+  <meta property="og:title" content="低电价比特币矿机托管 - 中原科技">
+  <meta property="og:description" content="$0.055–0.07/kWh｜7x24 稳定运行｜快速部署。获取矿机托管报价与收益测算。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zhuangyuan-mining.vercel.app/">
+  <meta property="og:image" content="https://zhuangyuan-mining.vercel.app/assets/hosting-site-racks.jpg">
   <link rel="preconnect" href="https://res.cloudinary.com">
   <link rel="preconnect" href="https://wa.me">
   <title>中原科技 - 比特币矿机与托管</title>
@@ -44,6 +50,10 @@
     .btn.secondary{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);box-shadow:none}
     .btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(34,197,94,.3)}
     .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);color:#e2e8f0;padding:10px 16px;border-radius:999px;font-size:13px;margin-bottom:18px}
+    .hero-trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:720px;margin:0 auto 30px}
+    .hero-trust-item{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 16px;color:#fff;box-shadow:0 18px 40px rgba(0,0,0,.14)}
+    .hero-trust-item strong{display:block;font-size:24px;color:var(--green);line-height:1.1}
+    .hero-trust-item span{display:block;margin-top:4px;color:#cbd5e1;font-size:13px}
     h2.section-title{text-align:center;font-size:32px;margin-bottom:16px;color:var(--dark)}
     p.section-note{text-align:center;color:var(--muted);margin-bottom:36px}
     .product-grid,.service-grid,.hosting-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
@@ -53,14 +63,66 @@
     .product-card h3{font-size:18px;margin-bottom:10px;color:var(--dark)}
     .hashrate{font-size:28px;font-weight:800;color:var(--green-2);margin-bottom:10px}
     .price{font-size:20px;font-weight:800;color:var(--dark);margin-bottom:14px}
+    .package-line{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #e2e8f0;padding-top:10px;margin-top:10px;color:#475569;font-size:14px}
+    .package-line strong{color:var(--dark)}
+    .recommended-tag{display:inline-flex;padding:6px 10px;border-radius:999px;background:#dcfce7;color:#166534;font-size:12px;font-weight:800;margin-bottom:10px}
     .tag{display:inline-block;padding:6px 10px;background:rgba(34,197,94,.12);color:var(--green-2);border-radius:999px;font-size:12px;font-weight:700;margin-bottom:10px}
+    #calculator{background:#fff}
+    .calc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+    .calc-panel,.calc-result{background:#f8fafc;border:1px solid #e2e8f0;border-radius:18px;padding:24px;box-shadow:0 14px 34px rgba(15,23,42,.06)}
+    .calc-form{display:grid;gap:14px}
+    .calc-form label{display:grid;gap:8px;color:#334155;font-weight:800;font-size:14px}
+    .calc-form input{padding:14px 16px;border:1px solid #d9e0eb;border-radius:12px;font-size:16px;background:#fff}
+    .calc-result{display:grid;gap:14px}
+    .calc-result-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px 16px}
+    .calc-result-row span{color:#64748b}
+    .calc-result-row strong{font-size:22px;color:var(--green-2)}
+    .calc-note{font-size:13px;color:var(--muted);margin-top:10px}
     .price-table{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .row{background:var(--card);border:1px solid rgba(15,23,42,.06);border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(15,23,42,.06)}
     .row-head{display:flex;justify-content:space-between;font-weight:800;color:var(--muted);margin-bottom:6px;font-size:13px}
     .row div{margin:4px 0}
     .price-img{width:100%;height:170px;object-fit:contain;border-radius:10px;background:#f8fafc;padding:8px;margin:6px 0 10px}
+    #hosting{background:linear-gradient(180deg,#f5f7fb,#ecfdf5)}
     #hosting .card h3{margin-bottom:8px;font-size:18px}
     #hosting .card p{color:var(--muted)}
+    .hosting-lead{max-width:900px;margin:0 auto 28px;text-align:center;color:#334155;font-size:17px}
+    .hosting-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:0 auto 30px;max-width:960px}
+    .hosting-metric{background:#fff;border:1px solid rgba(15,23,42,.07);border-radius:16px;padding:18px;text-align:center;box-shadow:0 12px 30px rgba(15,23,42,.05)}
+    .hosting-metric strong{display:block;font-size:24px;color:var(--green-2);margin-bottom:4px}
+    .hosting-metric span{color:var(--muted);font-size:13px}
+    .hosting-gallery{margin:0 0 30px}
+    .hosting-gallery-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:16px;flex-wrap:wrap}
+    .hosting-gallery-head h3{font-size:24px;color:var(--dark)}
+    .hosting-gallery-head p{color:var(--muted);max-width:620px}
+    .hosting-photo-grid{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:16px}
+    .hosting-photo{position:relative;min-height:270px;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(15,23,42,.14);background:#0f172a}
+    .hosting-photo:first-child{min-height:360px}
+    .hosting-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .45s}
+    .hosting-photo:hover img{transform:scale(1.05)}
+    .hosting-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,42,0),rgba(15,23,42,.82))}
+    .hosting-photo figcaption{position:absolute;left:18px;right:18px;bottom:16px;z-index:1;color:#fff;font-weight:800}
+    .hosting-photo figcaption span:first-child{color:#fff;font-size:17px;font-weight:800}
+    .hosting-photo figcaption span{display:block;margin-top:4px;color:#d1fae5;font-size:13px;font-weight:600}
+    .farm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
+    .farm-card{position:relative;min-height:260px;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(15,23,42,.12);background:#0f172a}
+    .farm-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .farm-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,42,.08),rgba(15,23,42,.78))}
+    .farm-card strong{display:none}
+    .hosting-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:24px}
+    .hosting-step{background:#0f172a;color:#e2e8f0;border-radius:16px;padding:18px;position:relative;overflow:hidden}
+    .hosting-step::after{content:"";position:absolute;right:-28px;top:-28px;width:90px;height:90px;border-radius:999px;background:rgba(34,197,94,.16)}
+    .hosting-step strong{display:block;color:#fff;margin-bottom:6px}
+    .hosting-step span{color:#cbd5e1;font-size:14px}
+    .hosting-cta{margin-top:28px;text-align:center}
+    #why{background:#fff}
+    .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .trust-card{background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid #e2e8f0;border-radius:18px;padding:24px;text-align:center;box-shadow:0 14px 34px rgba(15,23,42,.06)}
+    .trust-card strong{display:block;color:var(--green-2);font-size:30px;margin-bottom:8px}
+    .trust-card span{color:#334155;font-weight:800}
+    .float-quote{position:fixed;left:18px;bottom:24px;z-index:1300;background:#fff;border:1px solid #dcfce7;border-radius:18px;padding:12px;box-shadow:0 16px 36px rgba(15,23,42,.18);display:grid;gap:8px;min-width:210px}
+    .float-quote strong{color:var(--dark);font-size:15px}
+    .float-quote .btn{padding:10px 14px;font-size:13px;width:100%}
     #about p{font-size:17px;color:#334155;margin-bottom:12px}
     .contact-info{text-align:center;color:#1e293b;margin-bottom:18px}
     .contact-form{max-width:640px;margin:0 auto;display:grid;gap:14px}
@@ -114,13 +176,15 @@
     .address-preview,.helper-box,.success-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
     .address-preview{display:grid;gap:6px}
     .helper-box{color:#92400e;background:#fff7ed;border-color:#fed7aa}
-    .payment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
-    .payment-method{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px}
-    .payment-method img{width:100%;height:190px;object-fit:contain;background:#f8fafc;border-radius:10px;margin:10px 0}
-    .wallet{font-size:13px;color:var(--muted);word-break:break-all}
+    .safe-box{color:#14532d;background:#f0fdf4;border-color:#bbf7d0}
+    .confirm-list{display:grid;gap:12px;margin-top:14px}
+    .confirm-item{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px}
+    .confirm-item strong{display:block;color:var(--dark);margin-bottom:4px}
+    .confirm-item span{color:var(--muted);font-size:14px}
+    .quote-note{font-size:13px;color:var(--muted);margin-top:8px}
     .success-box{text-align:center;display:grid;gap:12px;background:linear-gradient(180deg,#f0fdf4,#fff)}
     .success-mark{width:68px;height:68px;border-radius:999px;margin:0 auto;display:grid;place-items:center;background:rgba(34,197,94,.15);color:#16a34a;font-size:32px;font-weight:800}
-    @media(max-width:768px){header .container{flex-direction:column;align-items:flex-start}#home h2{font-size:34px}nav{gap:14px}.checkout-steps,.checkout-layout,.form-grid,.option-row,.payment-grid{grid-template-columns:1fr}.summary-item{grid-template-columns:1fr}}
+    @media(max-width:768px){header .container{flex-direction:column;align-items:flex-start}#home h2{font-size:34px}nav{gap:14px}.checkout-steps,.checkout-layout,.form-grid,.option-row,.hosting-metrics,.hosting-steps,.hosting-photo-grid,.hero-trust,.calc-wrap,.farm-grid{grid-template-columns:1fr}.summary-item{grid-template-columns:1fr}.hosting-photo,.hosting-photo:first-child{min-height:260px}.float-quote{left:12px;right:12px;bottom:12px;min-width:0}.contact-stack{display:none}}
   </style>
 </head>
 <body>
@@ -146,19 +210,85 @@
   <section id="home">
     <div class="container">
       <div class="pill" data-i18n="hero_badge">比特币矿机一站式｜现货+托管</div>
-      <h2 data-i18n="home_title">专业比特币矿机解决方案</h2>
-      <p data-i18n="home_desc">S19/S21/T21 等主流机型现货，提供选型、上架、托管与 7x24 运维，交付更快、更稳定。</p>
+      <h2 data-i18n="home_title">低电价比特币矿机托管</h2>
+      <p data-i18n="home_desc">$0.055–0.07/kWh｜7x24 稳定运行｜快速部署</p>
+      <div class="hero-trust">
+        <div class="hero-trust-item"><strong data-i18n="hero_trust_1">99%</strong><span data-i18n="hero_trust_1_label">在线率</span></div>
+        <div class="hero-trust-item"><strong data-i18n="hero_trust_2">48小时</strong><span data-i18n="hero_trust_2_label">上架</span></div>
+        <div class="hero-trust-item"><strong data-i18n="hero_trust_3">真实矿场</strong><span data-i18n="hero_trust_3_label">实景可查</span></div>
+      </div>
       <div class="cta-row">
-        <a class="btn" href="#prices" data-i18n="btn_view_prices">查看现货价格</a>
-        <button class="btn secondary" id="contact-open" type="button" data-i18n="btn_contact">立即咨询</button>
+        <a class="btn" href="#contact" data-i18n="btn_view_prices">获取托管报价</a>
+        <a class="btn secondary" href="#hosting" data-i18n="btn_view_farms">查看矿场</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="calculator">
+    <div class="container">
+      <h2 class="section-title" data-i18n="calc_title">矿机收益计算器</h2>
+      <p class="section-note" data-i18n="calc_note">输入矿机算力、功耗与电价，快速预估托管后的日收益、电费和回本周期。</p>
+      <div class="calc-wrap">
+        <div class="calc-panel">
+          <form class="calc-form" id="profit-calculator">
+            <label><span data-i18n="calc_hashrate">算力（TH/s）</span><input id="calc-hashrate" type="number" min="1" step="1" value="200"></label>
+            <label><span data-i18n="calc_power">功耗（W）</span><input id="calc-power" type="number" min="1" step="1" value="3500"></label>
+            <label><span data-i18n="calc_electricity">电价（$/kWh）</span><input id="calc-electricity" type="number" min="0" step="0.001" value="0.06"></label>
+          </form>
+          <p class="calc-note" data-i18n="calc_assumption">按固定 BTC 价格与网络收益参数估算，实际收益会随币价、难度和矿池费变化。</p>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-row"><span data-i18n="calc_daily_revenue">每日收益</span><strong id="daily-revenue">$0.00</strong></div>
+          <div class="calc-result-row"><span data-i18n="calc_daily_power">每日电费</span><strong id="daily-power">$0.00</strong></div>
+          <div class="calc-result-row"><span data-i18n="calc_net_profit">净利润</span><strong id="net-profit">$0.00</strong></div>
+          <div class="calc-result-row"><span data-i18n="calc_payback">回本周期（天）</span><strong id="payback-days">--</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hosting">
+    <div class="container">
+      <h2 class="section-title" data-i18n="section_hosting">矿机托管解决方案</h2>
+      <p class="section-note" data-i18n="hosting_desc">从电价、运维、安全到收益追踪，围绕矿机长期稳定运行设计托管方案。</p>
+      <div class="hosting-grid">
+        <div class="card">
+          <div class="tag" data-i18n="hosting_power">电力与成本</div>
+          <h3 data-i18n="hosting_power_title">低电价稳定运行</h3>
+          <p data-i18n="hosting_power_desc">电价 $0.055–0.07，稳定供电，工业级矿场，帮助矿机降低长期运行成本。</p>
+        </div>
+        <div class="card">
+          <div class="tag" data-i18n="hosting_ops">运维</div>
+          <h3 data-i18n="hosting_ops_title">7x24 运维监控</h3>
+          <p data-i18n="hosting_ops_desc">7x24 监控、自动告警、周报系统，持续跟踪算力、温度、离线和异常状态。</p>
+        </div>
+        <div class="card">
+          <div class="tag" data-i18n="hosting_security">安全</div>
+          <h3 data-i18n="hosting_security_title">资产安全管理</h3>
+          <p data-i18n="hosting_security_desc">视频监控、资产编号、独立机架，便于核对矿机位置、运行记录和托管状态。</p>
+        </div>
+      </div>
+      <div class="hosting-gallery">
+        <div class="hosting-gallery-head">
+          <h3 data-i18n="hosting_gallery_title">真实矿场</h3>
+          <p data-i18n="hosting_gallery_desc">多地区矿场资源，按电价、机器规模和部署速度匹配托管方案。</p>
+        </div>
+        <div class="farm-grid">
+          <figure class="farm-card"><img src="assets/hosting-site-racks.jpg" alt="Mining farm rack area" loading="lazy"></figure>
+          <figure class="farm-card"><img src="assets/hosting-site-cooling.jpg" alt="Mining farm cooling system" loading="lazy"></figure>
+          <figure class="farm-card"><img src="assets/hosting-site-pipeline.jpg" alt="Mining farm power and pipeline layout" loading="lazy"></figure>
+        </div>
+      </div>
+      <div class="hosting-cta">
+        <button class="btn" type="button" onclick="document.getElementById('contact-modal')?.classList.add('active');" data-i18n="hosting_cta">获取托管报价</button>
       </div>
     </div>
   </section>
 
   <section id="products">
     <div class="container">
-      <h2 class="section-title" data-i18n="section_products">热门矿机</h2>
-      <p class="section-note" data-i18n="products_note">精选高算力、高性价比机型，深圳现货可自提/快递。</p>
+      <h2 class="section-title" data-i18n="section_products">矿机 + 托管套餐</h2>
+      <p class="section-note" data-i18n="products_note">不只看机器价格，更关注电价、在线率和每日净收益结果。</p>
       <div class="product-grid" id="product-grid"></div>
     </div>
   </section>
@@ -169,30 +299,6 @@
       <p class="section-note" data-i18n="price_note">价格随市场波动，以最终确认单为准；发货地深圳，可代订国际快递/空运/海运。</p>
       <div class="row-head"><span>Coin</span><span data-i18n="th_model">型号</span><span data-i18n="th_price">价格</span></div>
       <div class="price-table" id="price-table"></div>
-    </div>
-  </section>
-
-  <section id="hosting">
-    <div class="container">
-      <h2 class="section-title" data-i18n="section_hosting">矿机托管</h2>
-      <p class="section-note" data-i18n="hosting_desc">10-500 台托管，一条龙：上架调试、电力对接、实时运维监控，透明结算。</p>
-      <div class="hosting-grid">
-        <div class="card">
-          <div class="tag" data-i18n="hosting_power">电价 0.055–0.07/kWh</div>
-          <h3 data-i18n="hosting_power_title">电力与上架</h3>
-          <p data-i18n="hosting_power_desc">协助谈判电价，24-72 小时完成上架与算力验证，缩短停机期。</p>
-        </div>
-        <div class="card">
-          <div class="tag" data-i18n="hosting_ops">7x24 监控</div>
-          <h3 data-i18n="hosting_ops_title">运维监控</h3>
-          <p data-i18n="hosting_ops_desc">算力/温度/掉板实时告警，自动派单；支持周报与巡检留痕。</p>
-        </div>
-        <div class="card">
-          <div class="tag" data-i18n="hosting_security">安全透明</div>
-          <h3 data-i18n="hosting_security_title">安全与追踪</h3>
-          <p data-i18n="hosting_security_desc">机房安防+视频抽检，资产编号可追踪；支持单机/混托。</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -216,6 +322,19 @@
           <h3 data-i18n="svc_warranty">售后保障</h3>
           <p data-i18n="svc_warranty_desc">备机/备件优先置换，保障算力在线率。</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+      <h2 class="section-title" data-i18n="why_title">为什么选择我们</h2>
+      <p class="section-note" data-i18n="why_note">我们把矿机托管从“买设备”升级为“看运行结果”，重点关注电价、在线率、部署速度和收益透明。</p>
+      <div class="trust-grid">
+        <div class="trust-card"><strong data-i18n="why_stat_1">1200+</strong><span data-i18n="why_stat_1_label">在托管矿机</span></div>
+        <div class="trust-card"><strong data-i18n="why_stat_2">2年以上</strong><span data-i18n="why_stat_2_label">运行经验</span></div>
+        <div class="trust-card"><strong data-i18n="why_stat_3">10+国家</strong><span data-i18n="why_stat_3_label">客户覆盖</span></div>
+        <div class="trust-card"><strong data-i18n="why_stat_4">99%</strong><span data-i18n="why_stat_4_label">在线率保障</span></div>
       </div>
     </div>
   </section>
@@ -279,19 +398,17 @@
   <div class="modal-overlay" id="pay-modal">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title" data-i18n="pay_modal_title">请选择收款方式 / Select Payment</div>
+        <div class="modal-title" data-i18n="pay_modal_title">付款安全提示 / Payment Safety</div>
         <button class="modal-close" id="pay-close" aria-label="关闭">×</button>
       </div>
       <div class="pay-options">
         <div class="pay-card">
-          <img class="pay-img" src="pay-trx.jpg" alt="USDT TRX">
-          <h4 data-i18n="pay_trx_title">USDT 充币 (TRX)</h4>
-          <p data-i18n="pay_trx_desc">地址: TNbfn9MinzULV5tgYMUegBivACxSeKNUTv</p>
+          <h4 data-i18n="pay_trx_title">先确认订单</h4>
+          <p data-i18n="pay_trx_desc">本站不直接展示收款地址。请先提交询价，客服确认库存、价格、运费或托管方案后，再发送正式确认单。</p>
         </div>
         <div class="pay-card">
-          <img class="pay-img" src="pay-bsc.jpg" alt="USDT BSC">
-          <h4 data-i18n="pay_bsc_title">USDT 充币 (BSC)</h4>
-          <p data-i18n="pay_bsc_desc">地址: 0x9ef3553baf12f6f28aedc6d72a66e6101447150b</p>
+          <h4 data-i18n="pay_bsc_title">人工核对后付款</h4>
+          <p data-i18n="pay_bsc_desc">付款方式只会在人工核对完成后，通过微信或 WhatsApp 与订单号一起确认。请勿向未确认地址付款。</p>
         </div>
       </div>
     </div>
@@ -309,10 +426,10 @@
 
   <script>
     const products = [
-      { name: "蚂蚁 S21 200T", hashrate: "200 TH/s", price: "785 USDT" },
-      { name: "蚂蚁 T21 190T", hashrate: "190 TH/s", price: "529 USDT" },
-      { name: "蚂蚁 S19j Pro 104T", hashrate: "104 TH/s", price: "115 USDT" },
-      { name: "蚂蚁 S19 Pro+ Hydro 198T", hashrate: "198 TH/s", price: "338 USDT" }
+      { name: "S21 200T + 托管套餐", hashrate: "200 TH/s", price: "785 USDT", hostingFee: "$151/月", dailyProfit: "$1.05–2.45/天", recommended: true },
+      { name: "T21 190T + 托管套餐", hashrate: "190 TH/s", price: "529 USDT", hostingFee: "$144/月", dailyProfit: "$0.92–2.25/天", recommended: true },
+      { name: "S19j Pro 104T + 托管套餐", hashrate: "104 TH/s", price: "115 USDT", hostingFee: "$78/月", dailyProfit: "$0.34–1.18/天", recommended: false },
+      { name: "S19 Pro+ Hydro 198T + 托管套餐", hashrate: "198 TH/s", price: "338 USDT", hostingFee: "$150/月", dailyProfit: "$0.95–2.38/天", recommended: true }
     ];
 
     const priceData = [
@@ -362,48 +479,60 @@
 
     const translations = {
       zh: {
-        nav_home:"首页",nav_products:"矿机产品",nav_prices:"价格表",nav_hosting:"托管",nav_services:"服务",nav_about:"关于",nav_contact:"联系",
-        hero_badge:"比特币矿机一站式｜现货+托管",home_title:"专业比特币矿机解决方案",home_desc:"S19/S21/T21 等主流机型现货，提供选型、上架、托管与 7x24 运维，交付更快、更稳定。",
-        btn_view_prices:"查看现货价格",btn_contact:"立即咨询",btn_buy:"立即购买",btn_submit:"提交",
-        section_products:"热门矿机",products_note:"精选高算力、高性价比机型，深圳现货可自提/快递。",
+        nav_home:"首页",nav_products:"托管套餐",nav_prices:"价格表",nav_hosting:"托管",nav_services:"服务",nav_about:"关于",nav_contact:"联系",
+        hero_badge:"比特币矿机托管｜低电价+稳定运行",home_title:"低电价比特币矿机托管",home_desc:"$0.055–0.07/kWh｜7x24 稳定运行｜快速部署",
+        hero_trust_1:"99%",hero_trust_1_label:"在线率",hero_trust_2:"48小时",hero_trust_2_label:"上架",hero_trust_3:"真实矿场",hero_trust_3_label:"实景可查",
+        btn_view_prices:"获取托管报价",btn_view_farms:"查看矿场",btn_contact:"立即咨询",btn_buy:"申请报价",btn_submit:"提交",
+        calc_title:"矿机收益计算器",calc_note:"输入矿机算力、功耗与电价，快速预估托管后的日收益、电费和回本周期。",calc_hashrate:"算力（TH/s）",calc_power:"功耗（W）",calc_electricity:"电价（$/kWh）",calc_assumption:"按固定 BTC 价格与网络收益参数估算，实际收益会随币价、难度和矿池费变化。",calc_daily_revenue:"每日收益",calc_daily_power:"每日电费",calc_net_profit:"净利润",calc_payback:"回本周期（天）",
+        section_products:"矿机 + 托管套餐",products_note:"不只看机器价格，更关注电价、在线率和每日净收益结果。",recommended_package:"推荐托管方案",monthly_hosting_fee:"每月托管费用",estimated_daily_profit:"预计每日收益",
         section_prices:"现货价格表 / Price List",price_note:"价格随市场波动，以最终确认单为准；发货地深圳，可代订国际快递/空运/海运。",
         th_model:"型号",th_price:"价格",
-        section_hosting:"矿机托管",hosting_desc:"10-500 台托管，一条龙：上架调试、电力对接、实时运维监控，透明结算。",
-        hosting_power:"电价 0.055–0.07/kWh",hosting_power_title:"电力与上架",hosting_power_desc:"协助谈判电价，24-72 小时完成上架与算力验证，缩短停机期。",
-        hosting_ops:"7x24 监控",hosting_ops_title:"运维监控",hosting_ops_desc:"算力/温度/掉板实时告警，自动派单；支持周报与巡检留痕。",
-        hosting_security:"安全透明",hosting_security_title:"安全与追踪",hosting_security_desc:"机房安防+视频抽检，资产编号可追踪；支持单机/混托。",
+        section_hosting:"矿机托管解决方案",hosting_desc:"从电价、运维、安全到收益追踪，围绕矿机长期稳定运行设计托管方案。",
+        hosting_gallery_title:"真实矿场",hosting_gallery_desc:"多地区矿场资源，按电价、机器规模和部署速度匹配托管方案。",
+        hosting_power:"电力与成本",hosting_power_title:"低电价稳定运行",hosting_power_desc:"电价 $0.055–0.07，稳定供电，工业级矿场，帮助矿机降低长期运行成本。",
+        hosting_ops:"运维",hosting_ops_title:"7x24 运维监控",hosting_ops_desc:"7x24 监控、自动告警、周报系统，持续跟踪算力、温度、离线和异常状态。",
+        hosting_security:"安全",hosting_security_title:"资产安全管理",hosting_security_desc:"视频监控、资产编号、独立机架，便于核对矿机位置、运行记录和托管状态。",
+        hosting_cta:"获取托管报价",
         section_services:"我们的服务",svc_install:"专业安装",svc_install_desc:"工程师上门/远程部署，按机型优化风道与功率。",
         svc_monitor:"运维监控",svc_monitor_desc:"7×24 实时监控，异常秒级提醒，缩短宕机时间。",
         svc_support:"技术支持",svc_support_desc:"固件升级、算力优化、掉板/过温排查全流程支撑。",
         svc_warranty:"售后保障",svc_warranty_desc:"备机/备件优先置换，保障算力在线率。",
+        why_title:"为什么选择我们",why_note:"我们把矿机托管从“买设备”升级为“看运行结果”，重点关注电价、在线率、部署速度和收益透明。",
+        why_stat_1:"1200+",why_stat_1_label:"在托管矿机",why_stat_2:"2年以上",why_stat_2_label:"运行经验",why_stat_3:"10+国家",why_stat_3_label:"客户覆盖",why_stat_4:"99%",why_stat_4_label:"在线率保障",
         section_about:"关于中原科技",about_para1:"我们专注比特币矿机销售与托管运维，团队来自矿场、硬件与风控背景，交付高算力、低功耗设备。",
         about_para2:"使命：让算力获取更简单、更透明。支持中文/英文沟通，深圳现货，全球发货。",
         section_contact:"联系我们",label_phone:"电话：",label_email:"邮箱：",label_contact:"联系人：",
         ph_name:"您的姓名",ph_email:"电子邮箱",ph_phone:"联系电话",ph_message:"留言内容",
         contact_modal_title:"联系二维码 / Contact QR",contact_wechat_title:"微信",contact_wechat_desc:"扫码添加微信咨询",contact_whatsapp_desc:"Scan to chat via WhatsApp",
-        pay_modal_title:"请选择收款方式 / Select Payment",pay_trx_title:"USDT 充币 (TRX)",pay_trx_desc:"地址: TNbfn9MinzULV5tgYMUegBivACxSeKNUTv",pay_bsc_title:"USDT 充币 (BSC)",pay_bsc_desc:"地址: 0x9ef3553baf12f6f28aedc6d72a66e6101447150b"
+        pay_modal_title:"付款安全提示 / Payment Safety",pay_trx_title:"先确认订单",pay_trx_desc:"本站不直接展示收款地址。请先提交询价，客服确认库存、价格、运费或托管方案后，再发送正式确认单。",pay_bsc_title:"人工核对后付款",pay_bsc_desc:"付款方式只会在人工核对完成后，通过微信或 WhatsApp 与订单号一起确认。请勿向未确认地址付款。",float_quote:"3分钟获取报价",float_whatsapp:"立即WhatsApp咨询"
       },
       en: {
-        nav_home:"Home",nav_products:"Miners",nav_prices:"Pricing",nav_hosting:"Hosting",nav_services:"Services",nav_about:"About",nav_contact:"Contact",
-        hero_badge:"One-stop miners | Stock + Hosting",home_title:"Pro Bitcoin Mining Solutions",home_desc:"Stock of S19/S21/T21 with selection, racking, hosting and 24/7 ops for faster, steadier delivery.",
-        btn_view_prices:"See price list",btn_contact:"Talk to us",btn_buy:"Contact sales",btn_submit:"Send",
-        section_products:"Hot Miners",products_note:"Curated high-efficiency rigs in Shenzhen. Pick up or worldwide shipping.",
+        nav_home:"Home",nav_products:"Hosting Packages",nav_prices:"Pricing",nav_hosting:"Hosting",nav_services:"Services",nav_about:"About",nav_contact:"Contact",
+        hero_badge:"Bitcoin miner hosting | Low power + stable uptime",home_title:"Low-cost Bitcoin Miner Hosting",home_desc:"$0.055–0.07/kWh | 24/7 stable operation | Fast deployment",
+        hero_trust_1:"99%",hero_trust_1_label:"Uptime",hero_trust_2:"48h",hero_trust_2_label:"Racking",hero_trust_3:"Real Farms",hero_trust_3_label:"Site photos available",
+        btn_view_prices:"Get Hosting Quote",btn_view_farms:"View Farms",btn_contact:"Talk to us",btn_buy:"Request Quote",btn_submit:"Send",
+        calc_title:"Miner Profit Calculator",calc_note:"Enter hashrate, power draw, and electricity price to estimate daily revenue, power cost, net profit, and payback.",calc_hashrate:"Hashrate (TH/s)",calc_power:"Power (W)",calc_electricity:"Electricity ($/kWh)",calc_assumption:"Estimated with fixed BTC price and network revenue assumptions. Actual results vary with BTC price, difficulty, and pool fees.",calc_daily_revenue:"Daily Revenue",calc_daily_power:"Daily Power Cost",calc_net_profit:"Net Profit",calc_payback:"Payback (days)",
+        section_products:"Miner + Hosting Packages",products_note:"Focus beyond machine price: power rate, uptime, and estimated daily net results.",recommended_package:"Recommended Hosting Plan",monthly_hosting_fee:"Monthly Hosting Fee",estimated_daily_profit:"Estimated Daily Profit",
         section_prices:"Spot Price List",price_note:"Prices move with market; final quotation prevails. Ship from Shenzhen via courier/air/sea.",
         th_model:"Model",th_price:"Price",
-        section_hosting:"Hosting",hosting_desc:"10-500 units turnkey: racking, power hookup, live monitoring, transparent settlement.",
-        hosting_power:"Power 0.055–0.07/kWh",hosting_power_title:"Power & Racking",hosting_power_desc:"Negotiate power, rack within 24-72h and validate hashrate to cut downtime.",
-        hosting_ops:"24/7 Monitoring",hosting_ops_title:"Ops Monitoring",hosting_ops_desc:"Realtime hashrate/thermal alerts with auto dispatch; weekly reports and audit trail.",
-        hosting_security:"Secure & Transparent",hosting_security_title:"Security & Traceability",hosting_security_desc:"Site security + spot video checks; asset IDs traceable; single or mixed hosting supported.",
+        section_hosting:"Miner Hosting Solutions",hosting_desc:"A hosting plan built around long-term miner uptime, power cost, operations, security, and revenue tracking.",
+        hosting_gallery_title:"Real Mining Farms",hosting_gallery_desc:"Multi-region hosting resources matched by power rate, miner scale, and deployment speed.",
+        hosting_power:"Power & Cost",hosting_power_title:"Low-cost Stable Operation",hosting_power_desc:"Power rate $0.055–0.07, stable supply, and industrial mining farms to reduce long-term running cost.",
+        hosting_ops:"Operations",hosting_ops_title:"24/7 Operations Monitoring",hosting_ops_desc:"24/7 monitoring, automatic alerts, and weekly reports for hashrate, temperature, offline status, and abnormal events.",
+        hosting_security:"Security",hosting_security_title:"Asset Security Management",hosting_security_desc:"Video monitoring, asset IDs, and independent racks for easier miner location, operation record, and hosting status checks.",
+        hosting_cta:"Get Hosting Quote",
         section_services:"Our Services",svc_install:"Installation",svc_install_desc:"On-site/remote deployment tuned for airflow and power per model.",
         svc_monitor:"Ops Monitoring",svc_monitor_desc:"24/7 monitoring with instant alerts to reduce downtime.",
         svc_support:"Tech Support",svc_support_desc:"Firmware upgrades, hashrate tuning, board/thermal troubleshooting end-to-end.",
         svc_warranty:"After-sales",svc_warranty_desc:"Spare units/parts priority swap to keep uptime high.",
+        why_title:"Why Choose Us",why_note:"We position hosting around operating results: power rate, uptime, deployment speed, and transparent revenue tracking.",
+        why_stat_1:"1200+",why_stat_1_label:"Hosted miners",why_stat_2:"2+ years",why_stat_2_label:"Operating experience",why_stat_3:"10+ countries",why_stat_3_label:"Client coverage",why_stat_4:"99%",why_stat_4_label:"Uptime assurance",
         section_about:"About Zhongyuan Tech",about_para1:"We focus on BTC miner sales and hosting. Team spans farms, hardware, and risk control to deliver efficient rigs.",
         about_para2:"Mission: make hashrate simpler and transparent. Chinese/English support. Shenzhen stock, global delivery.",
         section_contact:"Contact Us",label_phone:"Phone: ",label_email:"Email: ",label_contact:"Contact: ",
         ph_name:"Your name",ph_email:"Email",ph_phone:"Phone",ph_message:"Message",
         contact_modal_title:"Contact QR",contact_wechat_title:"WeChat",contact_wechat_desc:"Scan to add on WeChat",contact_whatsapp_desc:"Scan to chat via WhatsApp",
-        pay_modal_title:"Choose Payment",pay_trx_title:"USDT Top-up (TRX)",pay_trx_desc:"Address: TNbfn9MinzULV5tgYMUegBivACxSeKNUTv",pay_bsc_title:"USDT Top-up (BSC)",pay_bsc_desc:"Address: 0x9ef3553baf12f6f28aedc6d72a66e6101447150b"
+        pay_modal_title:"Payment Safety",pay_trx_title:"Confirm the order first",pay_trx_desc:"This site does not publish wallet addresses directly. Submit a quote request first; our team confirms stock, final price, freight or hosting details, then sends an official confirmation.",pay_bsc_title:"Pay only after manual review",pay_bsc_desc:"Payment details are confirmed only after manual review through WeChat or WhatsApp together with your inquiry number. Do not pay to unverified addresses.",float_quote:"Get a quote in 3 minutes",float_whatsapp:"WhatsApp Now"
       }
     };
 
@@ -413,7 +542,7 @@
       products.forEach(item=>{
         const card=document.createElement('div');
         card.className='card product-card';
-        card.innerHTML=`<h3>${item.name}</h3><p class="hashrate">${item.hashrate}</p><p class="price">${item.price}</p>`;
+        card.innerHTML=`${item.recommended ? '<div class="recommended-tag" data-i18n="recommended_package">推荐托管方案</div>' : ''}<h3>${item.name}</h3><p class="hashrate">${item.hashrate}</p><p class="price">${item.price}</p><div class="package-line"><span data-i18n="monthly_hosting_fee">每月托管费用</span><strong>${item.hostingFee}</strong></div><div class="package-line"><span data-i18n="estimated_daily_profit">预计每日收益</span><strong>${item.dailyProfit}</strong></div>`;
         wrap.appendChild(card);
       });
     }
@@ -428,11 +557,39 @@
         const btn=document.createElement('button');
         btn.className='btn buy-btn';
         btn.setAttribute('data-i18n','btn_buy');
-        btn.textContent='立即购买';
+        btn.textContent='申请报价';
         btn.onclick = null;
         row.appendChild(btn);
         wrap.appendChild(row);
       });
+    }
+
+    function initCalculator(){
+      const hashrate=document.getElementById('calc-hashrate');
+      const power=document.getElementById('calc-power');
+      const electricity=document.getElementById('calc-electricity');
+      const dailyRevenue=document.getElementById('daily-revenue');
+      const dailyPower=document.getElementById('daily-power');
+      const netProfit=document.getElementById('net-profit');
+      const paybackDays=document.getElementById('payback-days');
+      const btcPrice=65000;
+      const btcPerThDay=0.00000047;
+      const hardwareCost=785;
+      function update(){
+        const th=Number(hashrate?.value)||0;
+        const watts=Number(power?.value)||0;
+        const rate=Number(electricity?.value)||0;
+        const revenue=th*btcPerThDay*btcPrice;
+        const powerCost=(watts/1000)*24*rate;
+        const net=revenue-powerCost;
+        const payback=net>0?Math.ceil(hardwareCost/net):0;
+        dailyRevenue.textContent=`$${revenue.toFixed(2)}`;
+        dailyPower.textContent=`$${powerCost.toFixed(2)}`;
+        netProfit.textContent=`$${net.toFixed(2)}`;
+        paybackDays.textContent=payback?String(payback):'--';
+      }
+      [hashrate,power,electricity].forEach(input=>input?.addEventListener('input',update));
+      update();
     }
 
     function applyLang(lang){
@@ -486,6 +643,7 @@
     function init(){
       renderProducts();
       renderPrices();
+      initCalculator();
       bindModals();
       bindLang();
       // sticky header opacity tweak on scroll
@@ -502,8 +660,8 @@
 <script>
     (() => {
       const checkoutText = {
-        zh: { btn_buy: '立即购买', checkout_title: '订单结算', step1: '收货地址', step1Desc: '填写收货人与配送信息', step2: '订单支付', step2Desc: '确认订单并完成支付', step3: '提交成功', step3Desc: '保存订单号和付款凭证', infoTitle: '收货信息', infoDesc: '点击立即购买后先填写收货地址，再进入支付，这个流程和你给我的参考页面一致。', name: '收货人姓名', phone: '电话 / WhatsApp', country: '国家 / 地区', city: '城市', address: '详细地址', postal: '邮编', notes: '订单备注', billSame: '账单地址与收货地址一致', billOther: '账单地址不同', shippingTitle: '运输方式', shippingFast: '空运快线', shippingFastDesc: '确认后 5-8 个工作日', shippingStandard: '标准物流', shippingStandardDesc: '10-18 个工作日，运费更低', continuePay: '下一步，去支付', back: '返回修改', paid: '我已完成付款', restart: '继续下单', summary: '订单摘要', shippingFee: '运费', fee: '手续费', total: '订单总额', qty: '数量 1', addressPreview: '配送地址', paymentTitle: '订单支付', paymentDesc: '请按照以下地址付款，付款后将订单号和转账截图发给客服。', helper: '付款后请通过微信或 WhatsApp 发送订单号与截图，我们会尽快核对并安排发货。', successTitle: '订单已提交', successDesc: '收货信息已记录在当前页面中，下一步只需要完成付款并发送付款凭证。', orderNo: '订单号' },
-        en: { btn_buy: 'Buy Now', checkout_title: 'Checkout', step1: 'Shipping Address', step1Desc: 'Fill consignee and delivery information', step2: 'Order Payment', step2Desc: 'Review order and complete payment', step3: 'Submitted', step3Desc: 'Keep order number and payment proof', infoTitle: 'Shipping Information', infoDesc: 'This matches the flow you wanted: click buy now, enter address, then pay the order.', name: 'Full Name', phone: 'Phone / WhatsApp', country: 'Country / Region', city: 'City', address: 'Street Address', postal: 'Postal Code', notes: 'Order Notes', billSame: 'Billing address same as shipping', billOther: 'Use another billing address', shippingTitle: 'Shipping Method', shippingFast: 'Express Air Freight', shippingFastDesc: '5-8 working days after confirmation', shippingStandard: 'Standard Logistics', shippingStandardDesc: '10-18 working days with lower freight', continuePay: 'Continue to payment', back: 'Back', paid: 'I have paid', restart: 'Create another order', summary: 'Order Summary', shippingFee: 'Shipping', fee: 'Handling', total: 'Total', qty: 'Qty 1', addressPreview: 'Delivery Address', paymentTitle: 'Order Payment', paymentDesc: 'Pay to one of the addresses below, then send the order number and transfer screenshot to customer service.', helper: 'After payment, please contact us on WeChat or WhatsApp with your order number and screenshot so we can arrange shipment quickly.', successTitle: 'Order submitted', successDesc: 'Shipping information is saved in this page session. Next step: complete payment and send proof.', orderNo: 'Order No.' }
+        zh: { btn_buy: '申请报价', checkout_title: '询价与订单确认', step1: '联系与交付信息', step1Desc: '填写联系人、收货与托管需求', step2: '人工确认', step2Desc: '核对库存、价格、物流和付款方式', step3: '已提交', step3Desc: '等待客服确认报价', infoTitle: '询价信息', infoDesc: '下单后请先联系客服确认，再进行付款。我们会先人工确认库存、最终价格、运费或托管方案，再通过微信或 WhatsApp 发送正式确认单。', name: '姓名 / 公司', phone: '电话 / WhatsApp', country: '国家 / 地区', city: '城市', address: '收货地址 / 托管需求', postal: '邮编', notes: '备注：数量、托管、电价或发货要求', billSame: '仅询价，先不付款', billOther: '需要正式订单确认单', shippingTitle: '需求类型', shippingFast: '购买矿机并发货', shippingFastDesc: '人工确认库存、运费和交付时间', shippingStandard: '购买后托管 / 已有矿机托管', shippingStandardDesc: '人工确认机房、电价和上架时间', continuePay: '下一步，确认询价', back: '返回修改', paid: '提交付款凭证', restart: '继续询价', summary: '询价摘要', shippingFee: '运费 / 托管费', fee: '付款方式', total: '参考金额', qty: '数量 1', addressPreview: '联系与交付信息', paymentTitle: '人工确认订单', paymentDesc: '请先核对询价信息。下单后请先联系客服确认，再进行付款；本站不会在未确认前直接收款。', helper: '重要提示：请勿向页面外未知地址付款。付款方式只在人工确认后，通过微信或 WhatsApp 与询价单号一起确认。', confirmStockTitle: '确认库存与机况', confirmStockDesc: '核对型号、数量、新旧状态、质保和可发货时间。', confirmFreightTitle: '确认物流或托管方案', confirmFreightDesc: '根据国家、城市、数量或机房需求确认运费、电价和上架时间。', confirmPaymentTitle: '确认正式付款信息', confirmPaymentDesc: '只有人工核对完成后，才会发送正式确认单和付款说明。', manualReview: '人工确认', quoteNote: '页面金额仅作参考，最终金额以人工确认单为准。', successTitle: '询价已提交', successDesc: '询价信息已记录在当前页面中。请保存询价单号，并通过微信或 WhatsApp 联系客服完成最终确认；确认前无需付款。', orderNo: '询价单号' },
+        en: { btn_buy: 'Request Quote', checkout_title: 'Quote and Order Review', step1: 'Contact and Delivery', step1Desc: 'Enter contact, shipping, and hosting needs', step2: 'Manual Review', step2Desc: 'Confirm stock, price, freight, and payment method', step3: 'Submitted', step3Desc: 'Wait for a confirmed quote', infoTitle: 'Quote Information', infoDesc: 'After placing an order, contact customer service for confirmation before making payment. We manually confirm stock, final price, freight or hosting terms, then send an official confirmation via WeChat or WhatsApp.', name: 'Name / Company', phone: 'Phone / WhatsApp', country: 'Country / Region', city: 'City', address: 'Shipping address / Hosting needs', postal: 'Postal Code', notes: 'Notes: quantity, hosting, power rate, or shipping needs', billSame: 'Inquiry only, no payment now', billOther: 'Need official order confirmation', shippingTitle: 'Request Type', shippingFast: 'Buy miners and ship', shippingFastDesc: 'Manually confirm stock, freight, and delivery time', shippingStandard: 'Buy and host / Existing miner hosting', shippingStandardDesc: 'Manually confirm facility, power rate, and racking time', continuePay: 'Next: review inquiry', back: 'Back', paid: 'Submit Payment Proof', restart: 'Start another inquiry', summary: 'Inquiry Summary', shippingFee: 'Freight / Hosting fee', fee: 'Payment method', total: 'Reference Amount', qty: 'Qty 1', addressPreview: 'Contact and Delivery Info', paymentTitle: 'Manual Order Review', paymentDesc: 'Please review the inquiry first. Contact customer service for confirmation before making payment; this site does not collect payment before review.', helper: 'Important: do not pay to unknown wallet addresses outside this flow. Payment details are only confirmed after manual review via WeChat or WhatsApp together with your inquiry number.', confirmStockTitle: 'Confirm stock and condition', confirmStockDesc: 'Review model, quantity, new or used condition, warranty, and available shipping time.', confirmFreightTitle: 'Confirm freight or hosting plan', confirmFreightDesc: 'Confirm freight, power rate, and racking time based on country, city, quantity, or facility needs.', confirmPaymentTitle: 'Confirm official payment details', confirmPaymentDesc: 'Official payment instructions are sent only after manual review is complete.', manualReview: 'Manual review', quoteNote: 'Amounts shown here are for reference only. Final amount follows the manually confirmed quote.', successTitle: 'Inquiry submitted', successDesc: 'Your inquiry is saved in this page session. Keep the inquiry number and contact us on WeChat or WhatsApp for final confirmation. No payment is required before confirmation.', orderNo: 'Inquiry No.' }
       };
       const state = { step: 1, billingSame: true, shippingMethod: 'fast', product: null, address: null, orderNo: '' };
       const t = (key) => (checkoutText[localStorage.getItem('lang') || 'zh'] || checkoutText.zh)[key] || key;
@@ -566,19 +724,19 @@
         const host = document.getElementById('checkout-content');
         const title = document.getElementById('checkout-title');
         if (!host || !title || !state.product) return;
-        const shipping = state.shippingMethod === 'fast' ? 120 : 65;
-        const fee = 15;
+        const shipping = 0;
+        const fee = 0;
         const total = state.product.price + shipping + fee;
         title.textContent = t('checkout_title');
         let panel = '';
         if (state.step === 1) {
           panel = `<div class="checkout-panel"><h3>${t('infoTitle')}</h3><p>${t('infoDesc')}</p><form class="checkout-form" id="checkout-form"><div class="form-grid"><div class="field"><label>${t('name')}</label><input name="name" required value="${state.address?.name || ''}"></div><div class="field"><label>${t('phone')}</label><input name="phone" required value="${state.address?.phone || ''}"></div><div class="field"><label>${t('country')}</label><input name="country" required value="${state.address?.country || ''}"></div><div class="field"><label>${t('city')}</label><input name="city" required value="${state.address?.city || ''}"></div></div><div class="field"><label>${t('address')}</label><textarea name="address" required>${state.address?.address || ''}</textarea></div><div class="form-grid"><div class="field"><label>${t('postal')}</label><input name="postal" required value="${state.address?.postal || ''}"></div><div class="field"><label>${t('notes')}</label><input name="notes" value="${state.address?.notes || ''}"></div></div><div class="option-row"><button class="option-card ${state.billingSame ? 'active' : ''}" type="button" data-billing="same"><strong>${t('billSame')}</strong><span>${t('step1Desc')}</span></button><button class="option-card ${state.billingSame ? '' : 'active'}" type="button" data-billing="other"><strong>${t('billOther')}</strong><span>${t('step2Desc')}</span></button></div><div class="field"><label>${t('shippingTitle')}</label><div class="option-row"><button class="option-card ${state.shippingMethod === 'fast' ? 'active' : ''}" type="button" data-shipping="fast"><strong>${t('shippingFast')}</strong><span>${t('shippingFastDesc')}</span></button><button class="option-card ${state.shippingMethod === 'standard' ? 'active' : ''}" type="button" data-shipping="standard"><strong>${t('shippingStandard')}</strong><span>${t('shippingStandardDesc')}</span></button></div></div><div class="checkout-actions"><span></span><button class="btn" type="submit">${t('continuePay')}</button></div></form></div>`;
         } else if (state.step === 2) {
-          panel = `<div class="checkout-panel"><h3>${t('paymentTitle')}</h3><p>${t('paymentDesc')}</p>${addressPreview()}<div class="payment-grid"><div class="payment-method"><strong>USDT (TRX)</strong><img src="pay-trx.jpg" alt="TRX QR"><div class="wallet">TNbfn9MinzULV5tgYMUegBivACxSeKNUTv</div></div><div class="payment-method"><strong>USDT (BSC)</strong><img src="pay-bsc.jpg" alt="BSC QR"><div class="wallet">0x9ef3553baf12f6f28aedc6d72a66e6101447150b</div></div></div><div class="helper-box">${t('helper')}</div><div class="checkout-actions"><button class="btn secondary" type="button" id="checkout-back">${t('back')}</button><button class="btn" type="button" id="checkout-paid">${t('paid')}</button></div></div>`;
+          panel = `<div class="checkout-panel"><h3>${t('paymentTitle')}</h3><p>${t('paymentDesc')}</p>${addressPreview()}<div class="helper-box safe-box">${t('helper')}</div><div class="confirm-list"><div class="confirm-item"><strong>${t('confirmStockTitle')}</strong><span>${t('confirmStockDesc')}</span></div><div class="confirm-item"><strong>${t('confirmFreightTitle')}</strong><span>${t('confirmFreightDesc')}</span></div><div class="confirm-item"><strong>${t('confirmPaymentTitle')}</strong><span>${t('confirmPaymentDesc')}</span></div></div><div class="checkout-actions"><button class="btn secondary" type="button" id="checkout-back">${t('back')}</button><button class="btn" type="button" id="checkout-paid">${t('paid')}</button></div></div>`;
         } else {
           panel = `<div class="success-box"><div class="success-mark">✓</div><h3>${t('successTitle')}</h3><p>${t('successDesc')}</p><div><strong>${t('orderNo')}:</strong> ${state.orderNo}</div>${addressPreview()}<div class="checkout-actions"><span></span><button class="btn" type="button" id="checkout-restart">${t('restart')}</button></div></div>`;
         }
-        host.innerHTML = `<div class="checkout-steps"><div class="checkout-step ${state.step === 1 ? 'active' : state.step > 1 ? 'done' : ''}"><strong><span class="step-dot">1</span>${t('step1')}</strong><span>${t('step1Desc')}</span></div><div class="checkout-step ${state.step === 2 ? 'active' : state.step > 2 ? 'done' : ''}"><strong><span class="step-dot">2</span>${t('step2')}</strong><span>${t('step2Desc')}</span></div><div class="checkout-step ${state.step === 3 ? 'active done' : ''}"><strong><span class="step-dot">3</span>${t('step3')}</strong><span>${t('step3Desc')}</span></div></div><div class="checkout-layout">${panel}<div class="summary-panel"><h3>${t('summary')}</h3><div class="summary-block"><div class="summary-item"><div class="summary-thumb">${state.product.icon}</div><div><h4>${state.product.title}</h4><span>${state.product.sub} · ${t('qty')}</span></div><div class="summary-price">${money(state.product.price)}</div></div><div class="summary-list"><div class="summary-line"><span>${t('shippingFee')}</span><span>${money(shipping)}</span></div><div class="summary-line"><span>${t('fee')}</span><span>${money(fee)}</span></div><div class="summary-line total"><span>${t('total')}</span><span>${money(total)}</span></div></div></div><div class="summary-block" style="margin-top:12px"><strong>${t('orderNo')}</strong><p style="margin-top:8px">${state.orderNo}</p></div>${state.step > 1 ? `<div class="summary-block" style="margin-top:12px">${addressPreview()}</div>` : ''}</div></div>`;
+        host.innerHTML = `<div class="checkout-steps"><div class="checkout-step ${state.step === 1 ? 'active' : state.step > 1 ? 'done' : ''}"><strong><span class="step-dot">1</span>${t('step1')}</strong><span>${t('step1Desc')}</span></div><div class="checkout-step ${state.step === 2 ? 'active' : state.step > 2 ? 'done' : ''}"><strong><span class="step-dot">2</span>${t('step2')}</strong><span>${t('step2Desc')}</span></div><div class="checkout-step ${state.step === 3 ? 'active done' : ''}"><strong><span class="step-dot">3</span>${t('step3')}</strong><span>${t('step3Desc')}</span></div></div><div class="checkout-layout">${panel}<div class="summary-panel"><h3>${t('summary')}</h3><div class="summary-block"><div class="summary-item"><div class="summary-thumb">${state.product.icon}</div><div><h4>${state.product.title}</h4><span>${state.product.sub} · ${t('qty')}</span></div><div class="summary-price">${money(state.product.price)}</div></div><div class="summary-list"><div class="summary-line"><span>${t('shippingFee')}</span><span>${t('manualReview')}</span></div><div class="summary-line"><span>${t('fee')}</span><span>${t('manualReview')}</span></div><div class="summary-line total"><span>${t('total')}</span><span>${money(total)}</span></div></div><p class="quote-note">${t('quoteNote')}</p></div><div class="summary-block" style="margin-top:12px"><strong>${t('orderNo')}</strong><p style="margin-top:8px">${state.orderNo}</p></div>${state.step > 1 ? `<div class="summary-block" style="margin-top:12px">${addressPreview()}</div>` : ''}</div></div>`;
         bindCheckoutUi();
       }
       function openCheckout(product) { state.product = product; state.step = 1; state.billingSame = true; state.shippingMethod = 'fast'; state.orderNo = orderNo(); renderCheckout(); open('checkout-modal'); }
@@ -607,7 +765,12 @@
     .contact-tooltip{position:absolute;right:76px;top:50%;transform:translateY(-50%) translateX(6px);background:#fff;color:#111827;padding:7px 10px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.18);font-size:13px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
     .contact-item:hover .contact-tooltip{opacity:1;transform:translateY(-50%) translateX(0)}
     .contact-btn svg{width:28px;height:28px;fill:#fff}
+    @media(max-width:768px){.contact-stack{display:none}}
   </style>
+  <div class="float-quote">
+    <strong data-i18n="float_quote">3分钟获取报价</strong>
+    <a class="btn" href="https://wa.me/message/TJNIKRDWZN3IG1" data-i18n="float_whatsapp">立即WhatsApp咨询</a>
+  </div>
   <div class="contact-stack">
     <div class="contact-item">
       <button class="contact-btn" style="background:#1abc5b" aria-label="Phone" onclick="location.href='tel:+8613674067667'">
