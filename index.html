@@ -120,22 +120,6 @@
     .trust-card{background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid #e2e8f0;border-radius:18px;padding:24px;text-align:center;box-shadow:0 14px 34px rgba(15,23,42,.06)}
     .trust-card strong{display:block;color:var(--green-2);font-size:30px;margin-bottom:8px}
     .trust-card span{color:#334155;font-weight:800}
-    .conversion-section{background:#fff}
-    .conversion-section.alt{background:linear-gradient(180deg,#f8fafc,#fff)}
-    .conversion-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
-    .conversion-card h3{font-size:20px;margin-bottom:14px;color:var(--dark)}
-    .profit-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:12px}
-    .profit-metric{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
-    .profit-metric span{display:block;color:var(--muted);font-size:13px;font-weight:700;margin-bottom:4px}
-    .profit-metric strong{display:block;color:var(--green-2);font-size:22px}
-    .disclaimer{margin-top:14px;color:var(--muted);font-size:13px}
-    .step-list,.cost-list,.risk-list,.faq-list{list-style:none;display:grid;gap:12px}
-    .step-list li{display:flex;align-items:flex-start;gap:12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px}
-    .step-list strong{width:30px;height:30px;border-radius:999px;background:var(--green);color:var(--dark);display:grid;place-items:center;flex:0 0 auto;font-size:13px}
-    .cost-list li,.risk-list li{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px 14px;color:#334155;font-weight:700}
-    .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px}
-    .faq-item strong{display:block;color:var(--dark);margin-bottom:4px}
-    .faq-item span{color:var(--muted)}
     .float-quote{position:fixed;left:18px;bottom:24px;z-index:1300;background:#fff;border:1px solid #dcfce7;border-radius:18px;padding:12px;box-shadow:0 16px 36px rgba(15,23,42,.18);display:grid;gap:8px;min-width:210px}
     .float-quote strong{color:var(--dark);font-size:15px}
     .float-quote .btn{padding:10px 14px;font-size:13px;width:100%}
@@ -234,8 +218,8 @@
         <div class="hero-trust-item"><strong data-i18n="hero_trust_3">真实矿场</strong><span data-i18n="hero_trust_3_label">实景可查</span></div>
       </div>
       <div class="cta-row">
-        <a class="btn" href="https://wa.me/message/TJNIKRDWZN3IG1" data-i18n="btn_view_prices">Get Quote on WhatsApp</a>
-        <a class="btn secondary" href="https://wa.me/message/TJNIKRDWZN3IG1" data-i18n="btn_view_farms">Get Quote on WhatsApp</a>
+        <a class="btn" href="#contact" data-i18n="btn_view_prices">获取托管报价</a>
+        <a class="btn secondary" href="#hosting" data-i18n="btn_view_farms">查看矿场</a>
       </div>
     </div>
   </section>
@@ -259,21 +243,6 @@
           <div class="calc-result-row"><span data-i18n="calc_net_profit">净利润</span><strong id="net-profit">$0.00</strong></div>
           <div class="calc-result-row"><span data-i18n="calc_payback">回本周期（天）</span><strong id="payback-days">--</strong></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="real-profit" class="conversion-section">
-    <div class="container">
-      <h2 class="section-title" data-i18n="profit_title">Real Mining Profit</h2>
-      <p class="section-note" data-i18n="profit_note">Profit varies with BTC price and difficulty</p>
-      <div class="card conversion-card">
-        <div class="profit-metrics">
-          <div class="profit-metric"><span data-i18n="profit_model_label">Model</span><strong data-i18n="profit_model_value">S21 200T</strong></div>
-          <div class="profit-metric"><span data-i18n="profit_power_label">Power Cost</span><strong data-i18n="profit_power_value">$0.06/kWh</strong></div>
-          <div class="profit-metric"><span data-i18n="profit_net_label">Net Profit</span><strong data-i18n="profit_net_value">$1.2–2.4/day</strong></div>
-        </div>
-        <p class="disclaimer" data-i18n="profit_disclaimer">Profit varies with BTC price and difficulty</p>
       </div>
     </div>
   </section>
@@ -311,21 +280,8 @@
         </div>
       </div>
       <div class="hosting-cta">
-        <button class="btn" type="button" onclick="location.href='https://wa.me/message/TJNIKRDWZN3IG1';" data-i18n="hosting_cta">Get Quote on WhatsApp</button>
+        <button class="btn" type="button" onclick="document.getElementById('contact-modal')?.classList.add('active');" data-i18n="hosting_cta">获取托管报价</button>
       </div>
-    </div>
-  </section>
-
-  <section id="how-it-works" class="conversion-section alt">
-    <div class="container">
-      <h2 class="section-title" data-i18n="works_title">How It Works</h2>
-      <ol class="step-list">
-        <li><strong>1</strong><span data-i18n="works_step_1">Choose miner or hosting plan</span></li>
-        <li><strong>2</strong><span data-i18n="works_step_2">Confirm power cost</span></li>
-        <li><strong>3</strong><span data-i18n="works_step_3">Payment (USDT/BTC)</span></li>
-        <li><strong>4</strong><span data-i18n="works_step_4">Deployment within 48 hours</span></li>
-        <li><strong>5</strong><span data-i18n="works_step_5">Start mining</span></li>
-      </ol>
     </div>
   </section>
 
@@ -343,37 +299,6 @@
       <p class="section-note" data-i18n="price_note">价格随市场波动，以最终确认单为准；发货地深圳，可代订国际快递/空运/海运。</p>
       <div class="row-head"><span>Coin</span><span data-i18n="th_model">型号</span><span data-i18n="th_price">价格</span></div>
       <div class="price-table" id="price-table"></div>
-    </div>
-  </section>
-
-  <section id="hosting-costs" class="conversion-section">
-    <div class="container">
-      <div class="conversion-grid">
-        <div class="card conversion-card">
-          <h3 data-i18n="cost_title">Hosting Cost Breakdown</h3>
-          <ul class="cost-list">
-            <li data-i18n="cost_item_1">Electricity fee</li>
-            <li data-i18n="cost_item_2">Maintenance fee</li>
-            <li data-i18n="cost_item_3">Rack fee</li>
-            <li data-i18n="cost_item_4">Network fee</li>
-          </ul>
-        </div>
-        <div class="card conversion-card">
-          <h3 data-i18n="risk_title">Risk Disclosure</h3>
-          <ul class="risk-list">
-            <li data-i18n="risk_item_1">BTC price volatility</li>
-            <li data-i18n="risk_item_2">Network difficulty changes</li>
-            <li data-i18n="risk_item_3">Hardware wear</li>
-          </ul>
-        </div>
-        <div class="card conversion-card">
-          <h3 data-i18n="faq_title">FAQ</h3>
-          <div class="faq-list">
-            <div class="faq-item"><strong data-i18n="faq_q_1">Q: How do I track my miner?</strong><span data-i18n="faq_a_1">A: Via mining pool dashboard</span></div>
-            <div class="faq-item"><strong data-i18n="faq_q_2">Q: Payment method?</strong><span data-i18n="faq_a_2">A: USDT / BTC</span></div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -429,7 +354,7 @@
         <p><strong data-i18n="label_phone">电话：</strong><a href="tel:+8613674067667">+8613674067667</a></p>
         <p><strong data-i18n="label_email">邮箱：</strong><a href="mailto:1710915394@qq.com">1710915394@qq.com</a></p>
         <p><strong data-i18n="label_contact">联系人：</strong>Jack</p>
-        <p style="margin-top:6px;"><a class="btn" href="https://wa.me/message/TJNIKRDWZN3IG1" data-i18n="btn_contact">Get Quote on WhatsApp</a></p>
+        <p style="margin-top:6px;"><button class="btn" type="button" id="contact-open-2" data-i18n="btn_contact">添加微信/WhatsApp</button></p>
       </div>
       <form class="contact-form" action="https://formsubmit.co/1710915394@qq.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
@@ -438,7 +363,7 @@
         <input type="email" name="email" data-i18n-placeholder="ph_email" placeholder="电子邮箱" required>
         <input type="tel" name="phone" data-i18n-placeholder="ph_phone" placeholder="联系电话" required>
         <textarea name="message" rows="5" data-i18n-placeholder="ph_message" placeholder="留言内容" required></textarea>
-        <button type="submit" class="btn" data-i18n="btn_submit">Get Quote on WhatsApp</button>
+        <button type="submit" class="btn" data-i18n="btn_submit">提交</button>
       </form>
     </div>
   </section>
@@ -557,9 +482,8 @@
         nav_home:"首页",nav_products:"托管套餐",nav_prices:"价格表",nav_hosting:"托管",nav_services:"服务",nav_about:"关于",nav_contact:"联系",
         hero_badge:"比特币矿机托管｜低电价+稳定运行",home_title:"低电价比特币矿机托管",home_desc:"$0.055–0.07/kWh｜7x24 稳定运行｜快速部署",
         hero_trust_1:"99%",hero_trust_1_label:"在线率",hero_trust_2:"48小时",hero_trust_2_label:"上架",hero_trust_3:"真实矿场",hero_trust_3_label:"实景可查",
-        btn_view_prices:"Get Quote on WhatsApp",btn_view_farms:"Get Quote on WhatsApp",btn_contact:"Get Quote on WhatsApp",btn_buy:"Get Quote on WhatsApp",btn_submit:"Get Quote on WhatsApp",
+        btn_view_prices:"获取托管报价",btn_view_farms:"查看矿场",btn_contact:"立即咨询",btn_buy:"申请报价",btn_submit:"提交",
         calc_title:"矿机收益计算器",calc_note:"输入矿机算力、功耗与电价，快速预估托管后的日收益、电费和回本周期。",calc_hashrate:"算力（TH/s）",calc_power:"功耗（W）",calc_electricity:"电价（$/kWh）",calc_assumption:"按固定 BTC 价格与网络收益参数估算，实际收益会随币价、难度和矿池费变化。",calc_daily_revenue:"每日收益",calc_daily_power:"每日电费",calc_net_profit:"净利润",calc_payback:"回本周期（天）",
-        profit_title:"Real Mining Profit",profit_note:"Profit varies with BTC price and difficulty",profit_model_label:"Model",profit_model_value:"S21 200T",profit_power_label:"Power Cost",profit_power_value:"$0.06/kWh",profit_net_label:"Net Profit",profit_net_value:"$1.2–2.4/day",profit_disclaimer:"Profit varies with BTC price and difficulty",
         section_products:"矿机 + 托管套餐",products_note:"不只看机器价格，更关注电价、在线率和每日净收益结果。",recommended_package:"推荐托管方案",monthly_hosting_fee:"每月托管费用",estimated_daily_profit:"预计每日收益",
         section_prices:"现货价格表 / Price List",price_note:"价格随市场波动，以最终确认单为准；发货地深圳，可代订国际快递/空运/海运。",
         th_model:"型号",th_price:"价格",
@@ -568,11 +492,7 @@
         hosting_power:"电力与成本",hosting_power_title:"低电价稳定运行",hosting_power_desc:"电价 $0.055–0.07，稳定供电，工业级矿场，帮助矿机降低长期运行成本。",
         hosting_ops:"运维",hosting_ops_title:"7x24 运维监控",hosting_ops_desc:"7x24 监控、自动告警、周报系统，持续跟踪算力、温度、离线和异常状态。",
         hosting_security:"安全",hosting_security_title:"资产安全管理",hosting_security_desc:"视频监控、资产编号、独立机架，便于核对矿机位置、运行记录和托管状态。",
-        hosting_cta:"Get Quote on WhatsApp",
-        works_title:"How It Works",works_step_1:"Choose miner or hosting plan",works_step_2:"Confirm power cost",works_step_3:"Payment (USDT/BTC)",works_step_4:"Deployment within 48 hours",works_step_5:"Start mining",
-        cost_title:"Hosting Cost Breakdown",cost_item_1:"Electricity fee",cost_item_2:"Maintenance fee",cost_item_3:"Rack fee",cost_item_4:"Network fee",
-        risk_title:"Risk Disclosure",risk_item_1:"BTC price volatility",risk_item_2:"Network difficulty changes",risk_item_3:"Hardware wear",
-        faq_title:"FAQ",faq_q_1:"Q: How do I track my miner?",faq_a_1:"A: Via mining pool dashboard",faq_q_2:"Q: Payment method?",faq_a_2:"A: USDT / BTC",
+        hosting_cta:"获取托管报价",
         section_services:"我们的服务",svc_install:"专业安装",svc_install_desc:"工程师上门/远程部署，按机型优化风道与功率。",
         svc_monitor:"运维监控",svc_monitor_desc:"7×24 实时监控，异常秒级提醒，缩短宕机时间。",
         svc_support:"技术支持",svc_support_desc:"固件升级、算力优化、掉板/过温排查全流程支撑。",
@@ -584,15 +504,14 @@
         section_contact:"联系我们",label_phone:"电话：",label_email:"邮箱：",label_contact:"联系人：",
         ph_name:"您的姓名",ph_email:"电子邮箱",ph_phone:"联系电话",ph_message:"留言内容",
         contact_modal_title:"联系二维码 / Contact QR",contact_wechat_title:"微信",contact_wechat_desc:"扫码添加微信咨询",contact_whatsapp_desc:"Scan to chat via WhatsApp",
-        pay_modal_title:"付款安全提示 / Payment Safety",pay_trx_title:"先确认订单",pay_trx_desc:"本站不直接展示收款地址。请先提交询价，客服确认库存、价格、运费或托管方案后，再发送正式确认单。",pay_bsc_title:"人工核对后付款",pay_bsc_desc:"付款方式只会在人工核对完成后，通过微信或 WhatsApp 与订单号一起确认。请勿向未确认地址付款。",float_quote:"3分钟获取报价",float_whatsapp:"Get Quote on WhatsApp"
+        pay_modal_title:"付款安全提示 / Payment Safety",pay_trx_title:"先确认订单",pay_trx_desc:"本站不直接展示收款地址。请先提交询价，客服确认库存、价格、运费或托管方案后，再发送正式确认单。",pay_bsc_title:"人工核对后付款",pay_bsc_desc:"付款方式只会在人工核对完成后，通过微信或 WhatsApp 与订单号一起确认。请勿向未确认地址付款。",float_quote:"3分钟获取报价",float_whatsapp:"立即WhatsApp咨询"
       },
       en: {
         nav_home:"Home",nav_products:"Hosting Packages",nav_prices:"Pricing",nav_hosting:"Hosting",nav_services:"Services",nav_about:"About",nav_contact:"Contact",
         hero_badge:"Bitcoin miner hosting | Low power + stable uptime",home_title:"Low-cost Bitcoin Miner Hosting",home_desc:"$0.055–0.07/kWh | 24/7 stable operation | Fast deployment",
         hero_trust_1:"99%",hero_trust_1_label:"Uptime",hero_trust_2:"48h",hero_trust_2_label:"Racking",hero_trust_3:"Real Farms",hero_trust_3_label:"Site photos available",
-        btn_view_prices:"Get Quote on WhatsApp",btn_view_farms:"Get Quote on WhatsApp",btn_contact:"Get Quote on WhatsApp",btn_buy:"Get Quote on WhatsApp",btn_submit:"Get Quote on WhatsApp",
+        btn_view_prices:"Get Hosting Quote",btn_view_farms:"View Farms",btn_contact:"Talk to us",btn_buy:"Request Quote",btn_submit:"Send",
         calc_title:"Miner Profit Calculator",calc_note:"Enter hashrate, power draw, and electricity price to estimate daily revenue, power cost, net profit, and payback.",calc_hashrate:"Hashrate (TH/s)",calc_power:"Power (W)",calc_electricity:"Electricity ($/kWh)",calc_assumption:"Estimated with fixed BTC price and network revenue assumptions. Actual results vary with BTC price, difficulty, and pool fees.",calc_daily_revenue:"Daily Revenue",calc_daily_power:"Daily Power Cost",calc_net_profit:"Net Profit",calc_payback:"Payback (days)",
-        profit_title:"Real Mining Profit",profit_note:"Profit varies with BTC price and difficulty",profit_model_label:"Model",profit_model_value:"S21 200T",profit_power_label:"Power Cost",profit_power_value:"$0.06/kWh",profit_net_label:"Net Profit",profit_net_value:"$1.2–2.4/day",profit_disclaimer:"Profit varies with BTC price and difficulty",
         section_products:"Miner + Hosting Packages",products_note:"Focus beyond machine price: power rate, uptime, and estimated daily net results.",recommended_package:"Recommended Hosting Plan",monthly_hosting_fee:"Monthly Hosting Fee",estimated_daily_profit:"Estimated Daily Profit",
         section_prices:"Spot Price List",price_note:"Prices move with market; final quotation prevails. Ship from Shenzhen via courier/air/sea.",
         th_model:"Model",th_price:"Price",
@@ -601,11 +520,7 @@
         hosting_power:"Power & Cost",hosting_power_title:"Low-cost Stable Operation",hosting_power_desc:"Power rate $0.055–0.07, stable supply, and industrial mining farms to reduce long-term running cost.",
         hosting_ops:"Operations",hosting_ops_title:"24/7 Operations Monitoring",hosting_ops_desc:"24/7 monitoring, automatic alerts, and weekly reports for hashrate, temperature, offline status, and abnormal events.",
         hosting_security:"Security",hosting_security_title:"Asset Security Management",hosting_security_desc:"Video monitoring, asset IDs, and independent racks for easier miner location, operation record, and hosting status checks.",
-        hosting_cta:"Get Quote on WhatsApp",
-        works_title:"How It Works",works_step_1:"Choose miner or hosting plan",works_step_2:"Confirm power cost",works_step_3:"Payment (USDT/BTC)",works_step_4:"Deployment within 48 hours",works_step_5:"Start mining",
-        cost_title:"Hosting Cost Breakdown",cost_item_1:"Electricity fee",cost_item_2:"Maintenance fee",cost_item_3:"Rack fee",cost_item_4:"Network fee",
-        risk_title:"Risk Disclosure",risk_item_1:"BTC price volatility",risk_item_2:"Network difficulty changes",risk_item_3:"Hardware wear",
-        faq_title:"FAQ",faq_q_1:"Q: How do I track my miner?",faq_a_1:"A: Via mining pool dashboard",faq_q_2:"Q: Payment method?",faq_a_2:"A: USDT / BTC",
+        hosting_cta:"Get Hosting Quote",
         section_services:"Our Services",svc_install:"Installation",svc_install_desc:"On-site/remote deployment tuned for airflow and power per model.",
         svc_monitor:"Ops Monitoring",svc_monitor_desc:"24/7 monitoring with instant alerts to reduce downtime.",
         svc_support:"Tech Support",svc_support_desc:"Firmware upgrades, hashrate tuning, board/thermal troubleshooting end-to-end.",
@@ -617,7 +532,7 @@
         section_contact:"Contact Us",label_phone:"Phone: ",label_email:"Email: ",label_contact:"Contact: ",
         ph_name:"Your name",ph_email:"Email",ph_phone:"Phone",ph_message:"Message",
         contact_modal_title:"Contact QR",contact_wechat_title:"WeChat",contact_wechat_desc:"Scan to add on WeChat",contact_whatsapp_desc:"Scan to chat via WhatsApp",
-        pay_modal_title:"Payment Safety",pay_trx_title:"Confirm the order first",pay_trx_desc:"This site does not publish wallet addresses directly. Submit a quote request first; our team confirms stock, final price, freight or hosting details, then sends an official confirmation.",pay_bsc_title:"Pay only after manual review",pay_bsc_desc:"Payment details are confirmed only after manual review through WeChat or WhatsApp together with your inquiry number. Do not pay to unverified addresses.",float_quote:"Get a quote in 3 minutes",float_whatsapp:"Get Quote on WhatsApp"
+        pay_modal_title:"Payment Safety",pay_trx_title:"Confirm the order first",pay_trx_desc:"This site does not publish wallet addresses directly. Submit a quote request first; our team confirms stock, final price, freight or hosting details, then sends an official confirmation.",pay_bsc_title:"Pay only after manual review",pay_bsc_desc:"Payment details are confirmed only after manual review through WeChat or WhatsApp together with your inquiry number. Do not pay to unverified addresses.",float_quote:"Get a quote in 3 minutes",float_whatsapp:"WhatsApp Now"
       }
     };
 
@@ -642,8 +557,8 @@
         const btn=document.createElement('button');
         btn.className='btn buy-btn';
         btn.setAttribute('data-i18n','btn_buy');
-        btn.textContent='Get Quote on WhatsApp';
-        btn.onclick = (e) => { e.preventDefault(); location.href='https://wa.me/message/TJNIKRDWZN3IG1'; };
+        btn.textContent='申请报价';
+        btn.onclick = null;
         row.appendChild(btn);
         wrap.appendChild(row);
       });
@@ -745,8 +660,8 @@
 <script>
     (() => {
       const checkoutText = {
-        zh: { btn_buy: 'Get Quote on WhatsApp', checkout_title: '询价与订单确认', step1: '联系与交付信息', step1Desc: '填写联系人、收货与托管需求', step2: '人工确认', step2Desc: '核对库存、价格、物流和付款方式', step3: '已提交', step3Desc: '等待客服确认报价', infoTitle: '询价信息', infoDesc: '下单后请先联系客服确认，再进行付款。我们会先人工确认库存、最终价格、运费或托管方案，再通过微信或 WhatsApp 发送正式确认单。', name: '姓名 / 公司', phone: '电话 / WhatsApp', country: '国家 / 地区', city: '城市', address: '收货地址 / 托管需求', postal: '邮编', notes: '备注：数量、托管、电价或发货要求', billSame: '仅询价，先不付款', billOther: '需要正式订单确认单', shippingTitle: '需求类型', shippingFast: '购买矿机并发货', shippingFastDesc: '人工确认库存、运费和交付时间', shippingStandard: '购买后托管 / 已有矿机托管', shippingStandardDesc: '人工确认机房、电价和上架时间', continuePay: '下一步，确认询价', back: '返回修改', paid: '提交付款凭证', restart: '继续询价', summary: '询价摘要', shippingFee: '运费 / 托管费', fee: '付款方式', total: '参考金额', qty: '数量 1', addressPreview: '联系与交付信息', paymentTitle: '人工确认订单', paymentDesc: '请先核对询价信息。下单后请先联系客服确认，再进行付款；本站不会在未确认前直接收款。', helper: '重要提示：请勿向页面外未知地址付款。付款方式只在人工确认后，通过微信或 WhatsApp 与询价单号一起确认。', confirmStockTitle: '确认库存与机况', confirmStockDesc: '核对型号、数量、新旧状态、质保和可发货时间。', confirmFreightTitle: '确认物流或托管方案', confirmFreightDesc: '根据国家、城市、数量或机房需求确认运费、电价和上架时间。', confirmPaymentTitle: '确认正式付款信息', confirmPaymentDesc: '只有人工核对完成后，才会发送正式确认单和付款说明。', manualReview: '人工确认', quoteNote: '页面金额仅作参考，最终金额以人工确认单为准。', successTitle: '询价已提交', successDesc: '询价信息已记录在当前页面中。请保存询价单号，并通过微信或 WhatsApp 联系客服完成最终确认；确认前无需付款。', orderNo: '询价单号' },
-        en: { btn_buy: 'Get Quote on WhatsApp', checkout_title: 'Quote and Order Review', step1: 'Contact and Delivery', step1Desc: 'Enter contact, shipping, and hosting needs', step2: 'Manual Review', step2Desc: 'Confirm stock, price, freight, and payment method', step3: 'Submitted', step3Desc: 'Wait for a confirmed quote', infoTitle: 'Quote Information', infoDesc: 'After placing an order, contact customer service for confirmation before making payment. We manually confirm stock, final price, freight or hosting terms, then send an official confirmation via WeChat or WhatsApp.', name: 'Name / Company', phone: 'Phone / WhatsApp', country: 'Country / Region', city: 'City', address: 'Shipping address / Hosting needs', postal: 'Postal Code', notes: 'Notes: quantity, hosting, power rate, or shipping needs', billSame: 'Inquiry only, no payment now', billOther: 'Need official order confirmation', shippingTitle: 'Request Type', shippingFast: 'Buy miners and ship', shippingFastDesc: 'Manually confirm stock, freight, and delivery time', shippingStandard: 'Buy and host / Existing miner hosting', shippingStandardDesc: 'Manually confirm facility, power rate, and racking time', continuePay: 'Next: review inquiry', back: 'Back', paid: 'Submit Payment Proof', restart: 'Start another inquiry', summary: 'Inquiry Summary', shippingFee: 'Freight / Hosting fee', fee: 'Payment method', total: 'Reference Amount', qty: 'Qty 1', addressPreview: 'Contact and Delivery Info', paymentTitle: 'Manual Order Review', paymentDesc: 'Please review the inquiry first. Contact customer service for confirmation before making payment; this site does not collect payment before review.', helper: 'Important: do not pay to unknown wallet addresses outside this flow. Payment details are only confirmed after manual review via WeChat or WhatsApp together with your inquiry number.', confirmStockTitle: 'Confirm stock and condition', confirmStockDesc: 'Review model, quantity, new or used condition, warranty, and available shipping time.', confirmFreightTitle: 'Confirm freight or hosting plan', confirmFreightDesc: 'Confirm freight, power rate, and racking time based on country, city, quantity, or facility needs.', confirmPaymentTitle: 'Confirm official payment details', confirmPaymentDesc: 'Official payment instructions are sent only after manual review is complete.', manualReview: 'Manual review', quoteNote: 'Amounts shown here are for reference only. Final amount follows the manually confirmed quote.', successTitle: 'Inquiry submitted', successDesc: 'Your inquiry is saved in this page session. Keep the inquiry number and contact us on WeChat or WhatsApp for final confirmation. No payment is required before confirmation.', orderNo: 'Inquiry No.' }
+        zh: { btn_buy: '申请报价', checkout_title: '询价与订单确认', step1: '联系与交付信息', step1Desc: '填写联系人、收货与托管需求', step2: '人工确认', step2Desc: '核对库存、价格、物流和付款方式', step3: '已提交', step3Desc: '等待客服确认报价', infoTitle: '询价信息', infoDesc: '下单后请先联系客服确认，再进行付款。我们会先人工确认库存、最终价格、运费或托管方案，再通过微信或 WhatsApp 发送正式确认单。', name: '姓名 / 公司', phone: '电话 / WhatsApp', country: '国家 / 地区', city: '城市', address: '收货地址 / 托管需求', postal: '邮编', notes: '备注：数量、托管、电价或发货要求', billSame: '仅询价，先不付款', billOther: '需要正式订单确认单', shippingTitle: '需求类型', shippingFast: '购买矿机并发货', shippingFastDesc: '人工确认库存、运费和交付时间', shippingStandard: '购买后托管 / 已有矿机托管', shippingStandardDesc: '人工确认机房、电价和上架时间', continuePay: '下一步，确认询价', back: '返回修改', paid: '提交付款凭证', restart: '继续询价', summary: '询价摘要', shippingFee: '运费 / 托管费', fee: '付款方式', total: '参考金额', qty: '数量 1', addressPreview: '联系与交付信息', paymentTitle: '人工确认订单', paymentDesc: '请先核对询价信息。下单后请先联系客服确认，再进行付款；本站不会在未确认前直接收款。', helper: '重要提示：请勿向页面外未知地址付款。付款方式只在人工确认后，通过微信或 WhatsApp 与询价单号一起确认。', confirmStockTitle: '确认库存与机况', confirmStockDesc: '核对型号、数量、新旧状态、质保和可发货时间。', confirmFreightTitle: '确认物流或托管方案', confirmFreightDesc: '根据国家、城市、数量或机房需求确认运费、电价和上架时间。', confirmPaymentTitle: '确认正式付款信息', confirmPaymentDesc: '只有人工核对完成后，才会发送正式确认单和付款说明。', manualReview: '人工确认', quoteNote: '页面金额仅作参考，最终金额以人工确认单为准。', successTitle: '询价已提交', successDesc: '询价信息已记录在当前页面中。请保存询价单号，并通过微信或 WhatsApp 联系客服完成最终确认；确认前无需付款。', orderNo: '询价单号' },
+        en: { btn_buy: 'Request Quote', checkout_title: 'Quote and Order Review', step1: 'Contact and Delivery', step1Desc: 'Enter contact, shipping, and hosting needs', step2: 'Manual Review', step2Desc: 'Confirm stock, price, freight, and payment method', step3: 'Submitted', step3Desc: 'Wait for a confirmed quote', infoTitle: 'Quote Information', infoDesc: 'After placing an order, contact customer service for confirmation before making payment. We manually confirm stock, final price, freight or hosting terms, then send an official confirmation via WeChat or WhatsApp.', name: 'Name / Company', phone: 'Phone / WhatsApp', country: 'Country / Region', city: 'City', address: 'Shipping address / Hosting needs', postal: 'Postal Code', notes: 'Notes: quantity, hosting, power rate, or shipping needs', billSame: 'Inquiry only, no payment now', billOther: 'Need official order confirmation', shippingTitle: 'Request Type', shippingFast: 'Buy miners and ship', shippingFastDesc: 'Manually confirm stock, freight, and delivery time', shippingStandard: 'Buy and host / Existing miner hosting', shippingStandardDesc: 'Manually confirm facility, power rate, and racking time', continuePay: 'Next: review inquiry', back: 'Back', paid: 'Submit Payment Proof', restart: 'Start another inquiry', summary: 'Inquiry Summary', shippingFee: 'Freight / Hosting fee', fee: 'Payment method', total: 'Reference Amount', qty: 'Qty 1', addressPreview: 'Contact and Delivery Info', paymentTitle: 'Manual Order Review', paymentDesc: 'Please review the inquiry first. Contact customer service for confirmation before making payment; this site does not collect payment before review.', helper: 'Important: do not pay to unknown wallet addresses outside this flow. Payment details are only confirmed after manual review via WeChat or WhatsApp together with your inquiry number.', confirmStockTitle: 'Confirm stock and condition', confirmStockDesc: 'Review model, quantity, new or used condition, warranty, and available shipping time.', confirmFreightTitle: 'Confirm freight or hosting plan', confirmFreightDesc: 'Confirm freight, power rate, and racking time based on country, city, quantity, or facility needs.', confirmPaymentTitle: 'Confirm official payment details', confirmPaymentDesc: 'Official payment instructions are sent only after manual review is complete.', manualReview: 'Manual review', quoteNote: 'Amounts shown here are for reference only. Final amount follows the manually confirmed quote.', successTitle: 'Inquiry submitted', successDesc: 'Your inquiry is saved in this page session. Keep the inquiry number and contact us on WeChat or WhatsApp for final confirmation. No payment is required before confirmation.', orderNo: 'Inquiry No.' }
       };
       const state = { step: 1, billingSame: true, shippingMethod: 'fast', product: null, address: null, orderNo: '' };
       const t = (key) => (checkoutText[localStorage.getItem('lang') || 'zh'] || checkoutText.zh)[key] || key;
@@ -769,7 +684,7 @@
             card.appendChild(btn);
           }
           btn.textContent = t('btn_buy');
-          btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); location.href='https://wa.me/message/TJNIKRDWZN3IG1'; };
+          btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); openCheckout(productFromRow(title, sub, price)); };
         });
         document.querySelectorAll('#price-table .row').forEach((row) => {
           const cells = row.querySelectorAll('div');
@@ -784,7 +699,7 @@
           }
           btn.className = 'btn buy-btn';
           btn.textContent = t('btn_buy');
-          btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); location.href='https://wa.me/message/TJNIKRDWZN3IG1'; };
+          btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); openCheckout(productFromRow(title, sub, price)); };
         });
       }
       function addressPreview() {
@@ -854,7 +769,7 @@
   </style>
   <div class="float-quote">
     <strong data-i18n="float_quote">3分钟获取报价</strong>
-    <a class="btn" href="https://wa.me/message/TJNIKRDWZN3IG1" data-i18n="float_whatsapp">Get Quote on WhatsApp</a>
+    <a class="btn" href="https://wa.me/message/TJNIKRDWZN3IG1" data-i18n="float_whatsapp">立即WhatsApp咨询</a>
   </div>
   <div class="contact-stack">
     <div class="contact-item">
