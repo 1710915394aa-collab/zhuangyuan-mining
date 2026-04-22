@@ -60,6 +60,10 @@
     .card{background:var(--card);border-radius:16px;padding:22px;box-shadow:0 10px 30px rgba(15,23,42,.06);border:1px solid rgba(15,23,42,.06);position:relative;overflow:hidden}
     .card::after{content:"";position:absolute;inset:0;border-radius:16px;border:1px solid transparent;background:linear-gradient(120deg,rgba(34,197,94,.35),rgba(34,197,94,0)) border-box;mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);mask-composite:xor;opacity:0;transition:.25s;pointer-events:none}
     .card:hover::after{opacity:1}
+    .live-proof-card{max-width:760px;margin:0 auto;text-align:center}
+    .live-proof-card h3{font-size:22px;margin-bottom:10px;color:var(--dark)}
+    .live-proof-card p{color:var(--muted);margin-bottom:18px}
+    .live-proof-tip{display:block;margin-top:14px;color:var(--muted);font-size:13px}
     .product-card h3{font-size:18px;margin-bottom:10px;color:var(--dark)}
     .hashrate{font-size:28px;font-weight:800;color:var(--green-2);margin-bottom:10px}
     .price{font-size:20px;font-weight:800;color:var(--dark);margin-bottom:14px}
@@ -243,6 +247,19 @@
           <div class="calc-result-row"><span data-i18n="calc_net_profit">净利润</span><strong id="net-profit">$0.00</strong></div>
           <div class="calc-result-row"><span data-i18n="calc_payback">回本周期（天）</span><strong id="payback-days">--</strong></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="live-proof">
+    <div class="container">
+      <h2 class="section-title" data-i18n="live_proof_title">客户真实收益证明</h2>
+      <p class="section-note" data-i18n="live_proof_note">查看客户在鱼池的真实运行数据，作为托管收益参考。</p>
+      <div class="card live-proof-card">
+        <h3 data-i18n="live_proof_card_title">鱼池实时数据</h3>
+        <p data-i18n="live_proof_card_text">点击查看客户真实矿机运行页面，包括算力、收益和运行情况。</p>
+        <a class="btn" href="https://www.f2pool.com/mining-user/fa2f3df22e755b3775789919bb03e6b0?user_name=bytner40" target="_blank" rel="noopener noreferrer" data-i18n="live_proof_button">查看鱼池实时数据</a>
+        <span class="live-proof-tip" data-i18n="live_proof_tip">* 数据会随矿池实时变化</span>
       </div>
     </div>
   </section>
@@ -484,6 +501,7 @@
         hero_trust_1:"99%",hero_trust_1_label:"在线率",hero_trust_2:"48小时",hero_trust_2_label:"上架",hero_trust_3:"真实矿场",hero_trust_3_label:"实景可查",
         btn_view_prices:"获取托管报价",btn_view_farms:"查看矿场",btn_contact:"立即咨询",btn_buy:"申请报价",btn_submit:"提交",
         calc_title:"矿机收益计算器",calc_note:"输入矿机算力、功耗与电价，快速预估托管后的日收益、电费和回本周期。",calc_hashrate:"算力（TH/s）",calc_power:"功耗（W）",calc_electricity:"电价（$/kWh）",calc_assumption:"按固定 BTC 价格与网络收益参数估算，实际收益会随币价、难度和矿池费变化。",calc_daily_revenue:"每日收益",calc_daily_power:"每日电费",calc_net_profit:"净利润",calc_payback:"回本周期（天）",
+        live_proof_title:"客户真实收益证明",live_proof_note:"查看客户在鱼池的真实运行数据，作为托管收益参考。",live_proof_card_title:"鱼池实时数据",live_proof_card_text:"点击查看客户真实矿机运行页面，包括算力、收益和运行情况。",live_proof_button:"查看鱼池实时数据",live_proof_tip:"* 数据会随矿池实时变化",
         section_products:"矿机 + 托管套餐",products_note:"不只看机器价格，更关注电价、在线率和每日净收益结果。",recommended_package:"推荐托管方案",monthly_hosting_fee:"每月托管费用",estimated_daily_profit:"预计每日收益",
         section_prices:"现货价格表 / Price List",price_note:"价格随市场波动，以最终确认单为准；发货地深圳，可代订国际快递/空运/海运。",
         th_model:"型号",th_price:"价格",
@@ -512,6 +530,7 @@
         hero_trust_1:"99%",hero_trust_1_label:"Uptime",hero_trust_2:"48h",hero_trust_2_label:"Racking",hero_trust_3:"Real Farms",hero_trust_3_label:"Site photos available",
         btn_view_prices:"Get Hosting Quote",btn_view_farms:"View Farms",btn_contact:"Talk to us",btn_buy:"Request Quote",btn_submit:"Send",
         calc_title:"Miner Profit Calculator",calc_note:"Enter hashrate, power draw, and electricity price to estimate daily revenue, power cost, net profit, and payback.",calc_hashrate:"Hashrate (TH/s)",calc_power:"Power (W)",calc_electricity:"Electricity ($/kWh)",calc_assumption:"Estimated with fixed BTC price and network revenue assumptions. Actual results vary with BTC price, difficulty, and pool fees.",calc_daily_revenue:"Daily Revenue",calc_daily_power:"Daily Power Cost",calc_net_profit:"Net Profit",calc_payback:"Payback (days)",
+        live_proof_title:"Live Mining Proof",live_proof_note:"View a real client mining page on F2Pool for reference.",live_proof_card_title:"F2Pool Live Data",live_proof_card_text:"Check real mining performance, hashrate, and earnings from a client page.",live_proof_button:"View Live F2Pool Data",live_proof_tip:"* Data changes in real time on the mining pool",
         section_products:"Miner + Hosting Packages",products_note:"Focus beyond machine price: power rate, uptime, and estimated daily net results.",recommended_package:"Recommended Hosting Plan",monthly_hosting_fee:"Monthly Hosting Fee",estimated_daily_profit:"Estimated Daily Profit",
         section_prices:"Spot Price List",price_note:"Prices move with market; final quotation prevails. Ship from Shenzhen via courier/air/sea.",
         th_model:"Model",th_price:"Price",
