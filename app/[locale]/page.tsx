@@ -1,32 +1,276 @@
 import Image from "next/image";
-import { ArrowRight, CheckCircle2, MessageCircle, PackageCheck, ShieldCheck, Ship, Zap } from "lucide-react";
+import { notFound } from "next/navigation";
+import {
+  ArrowRight,
+  Boxes,
+  CheckCircle2,
+  Clock3,
+  Globe2,
+  Headphones,
+  MessageCircle,
+  MonitorCheck,
+  Play,
+  ShieldCheck,
+  Ship,
+  TestTube2,
+  Video,
+  Wrench,
+  Zap
+} from "lucide-react";
 import { ButtonLink } from "@/components/button-link";
-import { MiningCalculator } from "@/components/mining-calculator";
 import { MotionReveal } from "@/components/motion-reveal";
-import { ProductCard } from "@/components/product-card";
-import { StatusBadge } from "@/components/status-badge";
-import { benefitIcons, dict, featuredProductIds, hostingIcons, products, shippingIcons, whatsappDisplay, whatsappNumber } from "@/lib/content";
+import { products, siteUrl, whatsappDisplay, whatsappNumber } from "@/lib/content";
 import { createMetadata } from "@/lib/metadata";
 import { isLocale, localizedPath, type Locale } from "@/lib/i18n";
-import { notFound } from "next/navigation";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
 };
 
+const hotMinerIds = ["s21-200t", "s19k-pro-120t", "whatsminer-m60s", "s21-xp"];
+const trustIcons = [Boxes, TestTube2, Clock3, Globe2, Zap, Headphones];
+const hostingIcons = [Zap, ShieldCheck, MonitorCheck, Wrench, Globe2];
+
+const homeCopy = {
+  en: {
+    metaTitle: "Reliable ASIC Miner Supplier & Hosting Partner | Zhongyuan Technology",
+    metaDescription:
+      "Zhongyuan Technology supplies new and used ASIC miners with daily updated prices, global shipping, mining hosting and video inspection before shipment.",
+    brandEyebrow: "Zhongyuan Technology",
+    headline: "Reliable ASIC Miner Supplier & Hosting Partner",
+    subheadline: "New & Used ASIC Miners - Global Shipping - Mining Hosting - Video Inspection Before Shipment",
+    getPrice: "Get Today Price",
+    whatsapp: "WhatsApp Us",
+    startHosting: "Start Hosting",
+    viewAllMiners: "View All Miners",
+    latestPrice: "Get Latest Price",
+    quote: "Quote",
+    yes: "Yes",
+    no: "No",
+    placeholder: "Placeholder",
+    heroBadges: ["Daily Updated Price", "Global Shipping", "Hosting Available", "Video Test Before Delivery"],
+    heroStats: [
+      ["Today quote", "S21 / S19 / M60"],
+      ["Inspection", "Video before shipping"],
+      ["Delivery", "Global logistics"],
+      ["Hosting", "From $0.04/kWh"]
+    ],
+    verificationTitle: "Buyer-ready verification workflow",
+    verificationText: "Quote confirmation, real machine video, packaging proof and logistics tracking before delivery.",
+    trust: {
+      eyebrow: "Trust",
+      title: "Why Choose Zhongyuan",
+      subtitle:
+        "A conversion-focused supply process built for overseas buyers who need real stock, proof, logistics and responsive communication.",
+      items: [
+        ["Real warehouse in China", "Stock handling, packaging and shipment coordination from China-based operations."],
+        ["Professional ASIC testing team", "Startup checks, hashrate verification and video evidence before delivery."],
+        ["Daily updated miner pricing", "Quote-based pricing for S21, S19k Pro, Whatsminer and bulk allocations."],
+        ["Global logistics support", "Air, sea and project shipment support for Asia, Europe, Middle East and Africa."],
+        ["Hosting deployment service", "Rack deployment, monitoring and remote operation support for hosted miners."],
+        ["After-sales technical support", "Technical communication for setup, firmware, troubleshooting and spare parts."]
+      ]
+    },
+    proofPhotos: [
+      ["Warehouse photos", "Ready stock, batch sorting and inventory confirmation"],
+      ["Shipment photos", "Secure packaging, pallet loading and export preparation"],
+      ["Team photos", "Sales, testing and logistics coordination team"],
+      ["Miner testing photos", "Power-on testing, hashrate screen and video verification"]
+    ],
+    miners: {
+      eyebrow: "Hot ASIC Miners",
+      title: "Daily Price For In-Demand Models",
+      subtitle: "Modern ASIC miner cards designed for fast B2B inquiry flow. Request the latest price before stock changes.",
+      hashrate: "Hashrate",
+      power: "Power consumption",
+      hosting: "Hosting available"
+    },
+    hosting: {
+      eyebrow: "Mining Hosting",
+      title: "Professional ASIC Miner Hosting",
+      subtitle:
+        "Deploy machines into managed mining facilities with low electricity cost, monitoring, maintenance and remote management support.",
+      features: [
+        ["Electricity cost", "From $0.04/kWh"],
+        ["Uptime", "High uptime operation"],
+        ["Monitoring", "24/7 status tracking"],
+        ["Repair support", "On-site maintenance support"],
+        ["Remote management", "Remote access and reporting"]
+      ],
+      processTitle: "Deployment process",
+      flow: [
+        ["Inquiry", "Confirm machine model, quantity, hosting country and target start date."],
+        ["Shipment", "Arrange shipment to the hosting facility with tracking and documentation."],
+        ["Installation", "Install, connect, configure and test machines before full operation."],
+        ["Online Mining", "Monitor online hashrate, uptime and maintenance requirements remotely."]
+      ]
+    },
+    shipments: {
+      eyebrow: "Recent Shipments",
+      title: "Shipment Proof For Real Buyers",
+      subtitle:
+        "Social proof style examples for overseas mining customers. Replace placeholders with real shipment photos as orders are completed.",
+      items: [
+        ["40x S21", "Kazakhstan", "Air shipment with pre-delivery testing"],
+        ["120x S19k Pro", "Ethiopia", "Bulk packing and hosting deployment support"],
+        ["60x Whatsminer", "UAE", "Warehouse video inspection and export logistics"]
+      ]
+    },
+    videos: {
+      eyebrow: "Video Verification",
+      title: "Real Miner Testing Videos",
+      subtitle: "Video proof reduces buyer risk. Add real videos for machine startup, hashrate testing, packaging and warehouse walkthrough.",
+      items: [
+        ["Miner startup video", "Power-on, fan startup and basic status check"],
+        ["Hashrate testing video", "Live hashrate screen and pool-side verification"],
+        ["Packaging video", "Foam protection, carton sealing and pallet loading"],
+        ["Warehouse walkthrough", "Real warehouse view before order confirmation"]
+      ]
+    },
+    faq: {
+      eyebrow: "FAQ",
+      title: "Buyer Questions",
+      subtitle: "Clear answers for ASIC miner buyers and hosting customers before they request a quote.",
+      items: [
+        ["Are miners tested before shipment?", "Yes, all miners are tested and video verified."],
+        ["Can you provide hosting?", "Yes."],
+        ["Which payment methods do you support?", "USDT / Bank Transfer."],
+        ["Do you support global shipping?", "Yes."]
+      ]
+    },
+    finalCta: {
+      eyebrow: "Fast Quote",
+      title: "Ready to buy miners or start hosting?",
+      text: "Send model, quantity, destination country and hosting needs. We will reply with today price, stock status and delivery plan."
+    }
+  },
+  zh: {
+    metaTitle: "可靠的 ASIC 矿机供应与托管服务商 | 中源科技",
+    metaDescription: "中源科技供应全新与二手 ASIC 矿机，提供每日更新报价、全球发货、矿机托管和发货前视频验机服务。",
+    brandEyebrow: "中源科技",
+    headline: "可靠的 ASIC 矿机供应与托管合作伙伴",
+    subheadline: "全新与二手 ASIC 矿机 - 全球发货 - 矿机托管 - 发货前视频验机",
+    getPrice: "获取今日报价",
+    whatsapp: "WhatsApp 联系",
+    startHosting: "开始托管",
+    viewAllMiners: "查看全部矿机",
+    latestPrice: "获取最新价格",
+    quote: "询价",
+    yes: "是",
+    no: "否",
+    placeholder: "图片占位",
+    heroBadges: ["每日更新价格", "全球发货", "支持托管", "发货前视频测试"],
+    heroStats: [
+      ["今日报价", "S21 / S19 / M60"],
+      ["验机", "发货前视频确认"],
+      ["交付", "全球物流支持"],
+      ["托管", "低至 $0.04/kWh"]
+    ],
+    verificationTitle: "面向买家的验机确认流程",
+    verificationText: "报价确认、真实机器视频、包装证明和物流跟踪，降低海外客户采购风险。",
+    trust: {
+      eyebrow: "信任背书",
+      title: "为什么选择中源科技",
+      subtitle: "为海外买家建立的高转化供应流程，重点解决真实库存、验机证明、物流交付和及时沟通问题。",
+      items: [
+        ["中国真实仓库", "基于中国仓储进行库存处理、包装和发货协调。"],
+        ["专业 ASIC 测试团队", "发货前提供开机检查、算力验证和视频证明。"],
+        ["每日更新矿机价格", "根据 S21、S19k Pro、Whatsminer 和批量采购需求实时报价。"],
+        ["全球物流支持", "支持亚洲、欧洲、中东、非洲等市场的空运、海运和项目物流。"],
+        ["矿机托管部署", "支持上架部署、运行监控和远程运维沟通。"],
+        ["售后技术支持", "提供安装、固件、故障排查和备件相关技术沟通。"]
+      ]
+    },
+    proofPhotos: [
+      ["仓库照片", "现货库存、批次分拣和库存确认"],
+      ["发货照片", "安全包装、托盘装载和出口准备"],
+      ["团队照片", "销售、测试和物流协同团队"],
+      ["矿机测试照片", "开机测试、算力界面和视频验机"]
+    ],
+    miners: {
+      eyebrow: "热门 ASIC 矿机",
+      title: "热门型号每日更新报价",
+      subtitle: "为 B2B 询盘设计的矿机产品卡。库存和价格变化较快，建议先获取最新报价。",
+      hashrate: "算力",
+      power: "功耗",
+      hosting: "支持托管"
+    },
+    hosting: {
+      eyebrow: "矿机托管",
+      title: "专业 ASIC 矿机托管服务",
+      subtitle: "将矿机部署到托管矿场，提供低电价、运行监控、维护支持和远程管理沟通。",
+      features: [
+        ["电费成本", "低至 $0.04/kWh"],
+        ["在线率", "高在线率运行支持"],
+        ["监控", "24/7 状态跟踪"],
+        ["维修支持", "现场维护支持"],
+        ["远程管理", "远程访问与报告"]
+      ],
+      processTitle: "托管部署流程",
+      flow: [
+        ["询盘", "确认矿机型号、数量、托管国家和预计上线时间。"],
+        ["运输", "安排矿机运输到托管场地，并提供物流跟踪和资料。"],
+        ["安装", "完成上架、接线、配置和测试，确认正式运行。"],
+        ["上线挖矿", "远程跟踪算力、在线率和维护需求。"]
+      ]
+    },
+    shipments: {
+      eyebrow: "近期发货",
+      title: "给真实买家的发货证明",
+      subtitle: "为海外矿机客户建立社会证明。后续可替换为真实订单发货照片。",
+      items: [
+        ["40 台 S21", "哈萨克斯坦", "空运发货，发货前完成测试"],
+        ["120 台 S19k Pro", "埃塞俄比亚", "批量包装，并支持托管部署"],
+        ["60 台 Whatsminer", "阿联酋", "仓库视频验机和出口物流支持"]
+      ]
+    },
+    videos: {
+      eyebrow: "视频验机",
+      title: "真实矿机测试视频",
+      subtitle: "视频证明可以降低买家风险。可展示开机、算力测试、包装和仓库走访视频。",
+      items: [
+        ["矿机开机视频", "开机、风扇启动和基础状态检查"],
+        ["算力测试视频", "实时算力界面和矿池端验证"],
+        ["包装视频", "泡棉保护、纸箱封装和托盘装载"],
+        ["仓库走访视频", "下单确认前展示真实仓库情况"]
+      ]
+    },
+    faq: {
+      eyebrow: "常见问题",
+      title: "买家常见问题",
+      subtitle: "在客户询价前，清晰回答矿机采购和托管客户最关心的问题。",
+      items: [
+        ["矿机发货前会测试吗？", "会，所有矿机都会测试，并可提供视频确认。"],
+        ["你们可以提供矿机托管吗？", "可以。"],
+        ["支持哪些付款方式？", "支持 USDT / 银行转账。"],
+        ["支持全球发货吗？", "支持。"]
+      ]
+    },
+    finalCta: {
+      eyebrow: "快速报价",
+      title: "准备采购矿机或开始托管？",
+      text: "发送型号、数量、目的地国家和托管需求，我们会回复今日价格、库存状态和交付方案。"
+    }
+  }
+} as const;
+
 export async function generateMetadata({ params }: PageProps) {
   const { locale: rawLocale } = await params;
   const locale = isLocale(rawLocale) ? rawLocale : "en";
-  const t = dict[locale];
+  const copy = homeCopy[locale];
 
   return createMetadata({
     locale,
-    title: `${t.brand} | ${t.tagline}`,
-    description:
-      locale === "zh"
-        ? "中源科技提供 S19、S21、Whatsminer 矿机供应、矿机托管、全球发货和海外矿场部署服务。"
-        : "Zhongyuan Technology supplies S19, S21 and Whatsminer ASIC miners with mining hosting, global shipping and stable supply chain support.",
-    keywords: ["asic miner supplier", "mining hosting", "S21 miner", "S19k Pro", "bitcoin mining"]
+    title: copy.metaTitle,
+    description: copy.metaDescription,
+    keywords: [
+      "ASIC miner supplier",
+      "Antminer S21 200T",
+      "S19k Pro 120T",
+      "Whatsminer M60S",
+      "mining hosting",
+      "bitcoin mining hosting"
+    ]
   });
 }
 
@@ -34,45 +278,97 @@ export default async function HomePage({ params }: PageProps) {
   const { locale: rawLocale } = await params;
   if (!isLocale(rawLocale)) notFound();
   const locale = rawLocale as Locale;
-  const t = dict[locale];
-  const featured = products.filter((product) => featuredProductIds.includes(product.id));
+  const copy = homeCopy[locale];
+  const hotMiners = hotMinerIds
+    .map((id) => products.find((product) => product.id === id))
+    .filter(Boolean)
+    .map((product) => product!);
+
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Zhongyuan Technology",
+    url: siteUrl,
+    description: copy.metaDescription,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: whatsappDisplay,
+      contactType: "sales",
+      areaServed: "Worldwide",
+      availableLanguage: ["English", "Chinese"]
+    },
+    sameAs: [`https://wa.me/${whatsappNumber}`]
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: copy.faq.items.map(([question, answer]) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: answer
+      }
+    }))
+  };
 
   return (
     <>
-      <section className="relative min-h-[88vh] overflow-hidden bg-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
+      <section className="relative isolate overflow-hidden bg-black">
         <Image
           src="/images/mining-farm-hero.png"
-          alt="Zhongyuan Technology ASIC mining farm"
+          alt="Zhongyuan Technology ASIC miner warehouse and mining facility"
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-72"
+          className="-z-10 object-cover opacity-58"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#0B0B0B_0%,rgba(11,11,11,0.88)_35%,rgba(11,11,11,0.32)_72%,rgba(11,11,11,0.18)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink-950 to-transparent" />
-        <div className="section-shell relative flex min-h-[88vh] items-center py-16">
-          <MotionReveal className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase text-gold-500">{t.hero.eyebrow}</p>
-            <h1 className="mt-5 max-w-3xl text-5xl font-semibold leading-tight text-white md:text-7xl">
-              {locale === "zh" ? t.hero.cnTitle : t.hero.title}
-            </h1>
-            <p className="mt-5 text-lg font-semibold text-gold-100 md:text-xl">{t.hero.subtitle}</p>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-stone-300 md:text-lg">{t.hero.description}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,#0B0B0B_0%,rgba(11,11,11,0.94)_38%,rgba(11,11,11,0.58)_72%,rgba(11,11,11,0.35)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-36 bg-gradient-to-t from-ink-950 to-transparent" />
+        <div className="section-shell grid min-h-[88vh] items-center gap-10 py-16 lg:grid-cols-[1.04fr_0.96fr]">
+          <MotionReveal>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold-500">{copy.brandEyebrow}</p>
+            <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-tight text-white md:text-7xl">{copy.headline}</h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-stone-300 md:text-xl">{copy.subheadline}</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <ButtonLink href={localizedPath(locale, "/contact")} icon={ArrowRight}>
-                {t.common.getQuote}
+                {copy.getPrice}
               </ButtonLink>
               <ButtonLink href={`https://wa.me/${whatsappNumber}`} target="_blank" icon={MessageCircle} variant="secondary">
-                {t.common.whatsappContact}: {whatsappDisplay}
+                {copy.whatsapp}
+              </ButtonLink>
+              <ButtonLink href={localizedPath(locale, "/hosting")} icon={Zap} variant="secondary">
+                {copy.startHosting}
               </ButtonLink>
             </div>
-            <div className="mt-10 grid max-w-2xl gap-3 sm:grid-cols-3">
-              {t.hero.stats.map(([value, label]) => (
-                <div key={label} className="rounded-lg border border-gold-500/18 bg-black/45 p-4 backdrop-blur">
-                  <p className="text-2xl font-semibold text-gold-500">{value}</p>
-                  <p className="mt-1 text-xs text-stone-400">{label}</p>
+            <div className="mt-8 grid max-w-3xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {copy.heroBadges.map((badge) => (
+                <div key={badge} className="flex min-h-16 items-center gap-3 rounded-lg border border-gold-500/25 bg-black/55 p-3 backdrop-blur">
+                  <CheckCircle2 className="size-5 shrink-0 text-gold-500" aria-hidden="true" />
+                  <span className="text-sm font-semibold text-stone-100">{badge}</span>
                 </div>
               ))}
+            </div>
+          </MotionReveal>
+
+          <MotionReveal delay={0.12} className="hidden lg:block">
+            <div className="surface-panel rounded-lg p-5">
+              <div className="grid grid-cols-2 gap-3">
+                {copy.heroStats.map(([title, value]) => (
+                  <div key={title} className="rounded-lg border border-white/10 bg-white/[0.035] p-4">
+                    <p className="text-xs uppercase text-stone-500">{title}</p>
+                    <p className="mt-2 text-lg font-semibold text-white">{value}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4 rounded-lg border border-gold-500/25 bg-gold-500/10 p-4">
+                <p className="text-sm font-semibold text-gold-100">{copy.verificationTitle}</p>
+                <p className="mt-2 text-sm leading-6 text-stone-300">{copy.verificationText}</p>
+              </div>
             </div>
           </MotionReveal>
         </div>
@@ -80,174 +376,233 @@ export default async function HomePage({ params }: PageProps) {
 
       <section className="bg-ink-950 py-16">
         <div className="section-shell">
-          <SectionHeading title={t.sections.featured} subtitle={t.sections.featuredSub} />
-          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {featured.map((product, index) => (
-              <MotionReveal key={product.id} delay={index * 0.05}>
-                <ProductCard product={product} locale={locale} compact />
-              </MotionReveal>
+          <SectionHeading eyebrow={copy.trust.eyebrow} title={copy.trust.title} subtitle={copy.trust.subtitle} />
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {copy.trust.items.map(([title, text], index) => {
+              const Icon = trustIcons[index] || ShieldCheck;
+              return (
+                <MotionReveal key={title} delay={index * 0.04}>
+                  <div className="h-full rounded-lg border border-white/10 bg-white/[0.035] p-5">
+                    <Icon className="size-6 text-gold-500" aria-hidden="true" />
+                    <h3 className="mt-5 text-xl font-semibold text-white">{title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-stone-400">{text}</p>
+                  </div>
+                </MotionReveal>
+              );
+            })}
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-4">
+            {copy.proofPhotos.map(([title, caption], index) => (
+              <PhotoProof key={title} title={title} caption={caption} position={20 + index * 20} placeholder={copy.placeholder} />
             ))}
           </div>
         </div>
       </section>
 
       <section className="border-y border-gold-500/12 bg-black bg-industrial-grid bg-[length:44px_44px] py-16">
-        <div className="section-shell grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <MotionReveal>
-            <p className="text-sm font-semibold uppercase text-gold-500">Global Shipping</p>
-            <h2 className="mt-3 text-3xl font-semibold text-white md:text-4xl">{t.sections.shipping}</h2>
-            <p className="mt-4 text-lg text-stone-300">{t.sections.shippingSub}</p>
-          </MotionReveal>
-          <div className="grid gap-4 md:grid-cols-3">
-            {t.shippingPoints.map((point, index) => {
-              const Icon = shippingIcons[index] || Ship;
-              return (
-                <MotionReveal key={point} delay={index * 0.06}>
-                  <div className="surface-panel rounded-lg p-5">
-                    <Icon className="size-6 text-gold-500" aria-hidden="true" />
-                    <h3 className="mt-5 text-lg font-semibold text-white">{point}</h3>
+        <div className="section-shell">
+          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <SectionHeading eyebrow={copy.miners.eyebrow} title={copy.miners.title} subtitle={copy.miners.subtitle} />
+            <ButtonLink href={localizedPath(locale, "/products")} icon={ArrowRight} variant="secondary">
+              {copy.viewAllMiners}
+            </ButtonLink>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {hotMiners.map((product, index) => (
+              <MotionReveal key={product.id} delay={index * 0.05}>
+                <article className="surface-panel flex h-full flex-col rounded-lg p-5">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-semibold uppercase text-gold-500">{product.category}</p>
+                      <h3 className="mt-2 text-2xl font-semibold text-white">{product.model}</h3>
+                    </div>
+                    <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-200">
+                      {copy.quote}
+                    </span>
                   </div>
-                </MotionReveal>
-              );
-            })}
+                  <dl className="mt-6 grid gap-3 text-sm">
+                    <Spec label={copy.miners.hashrate} value={product.hashRate} />
+                    <Spec label={copy.miners.power} value={product.power} />
+                    <Spec label={copy.miners.hosting} value={product.hostingAvailable ? copy.yes : copy.no} />
+                  </dl>
+                  <div className="mt-auto pt-6">
+                    <ButtonLink href={`${localizedPath(locale, "/contact")}?product=${encodeURIComponent(product.model)}`} icon={ArrowRight} className="w-full">
+                      {copy.latestPrice}
+                    </ButtonLink>
+                  </div>
+                </article>
+              </MotionReveal>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="bg-ink-950 py-16">
-        <div className="section-shell grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <MotionReveal className="surface-panel rounded-lg p-6">
-            <div className="flex items-center gap-3">
-              <span className="grid size-12 place-items-center rounded-lg bg-gold-500/10 text-gold-500">
-                <Zap className="size-6" aria-hidden="true" />
-              </span>
-              <div>
-                <p className="text-sm font-semibold uppercase text-gold-500">Electricity Price</p>
-                <h2 className="text-3xl font-semibold text-white">$0.04/kWh</h2>
-              </div>
-            </div>
-            <p className="mt-5 text-stone-300">{t.sections.hostingSub}</p>
-            <div className="mt-6">
-              <ButtonLink href={localizedPath(locale, "/hosting")} icon={ArrowRight}>
-                {t.common.startHosting}
-              </ButtonLink>
-            </div>
-          </MotionReveal>
-          <div>
-            <SectionHeading title={t.sections.hosting} subtitle={t.sections.hostingSub} compact />
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {t.hostingPoints.map((point, index) => {
+        <div className="section-shell grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <MotionReveal>
+            <SectionHeading eyebrow={copy.hosting.eyebrow} title={copy.hosting.title} subtitle={copy.hosting.subtitle} />
+            <div className="mt-7 grid gap-3 sm:grid-cols-2">
+              {copy.hosting.features.map(([title, value], index) => {
                 const Icon = hostingIcons[index] || ShieldCheck;
                 return (
-                  <div key={point} className="rounded-lg border border-white/10 bg-white/[0.03] p-4">
+                  <div key={title} className="rounded-lg border border-white/10 bg-black/35 p-4">
                     <Icon className="size-5 text-gold-500" aria-hidden="true" />
-                    <p className="mt-3 font-semibold text-white">{point}</p>
+                    <p className="mt-3 text-sm text-stone-400">{title}</p>
+                    <p className="mt-1 font-semibold text-white">{value}</p>
                   </div>
                 );
               })}
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-black py-16">
-        <div className="section-shell">
-          <SectionHeading title={t.sections.stock} subtitle="Available / Limited / Pre-order" />
-          <div className="mt-8 overflow-hidden rounded-lg border border-white/10">
-            <div className="hidden grid-cols-[1.2fr_0.9fr_0.9fr_0.9fr] gap-4 border-b border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-stone-300 md:grid">
-              <span>{t.common.model}</span>
-              <span>{t.common.hashRate}</span>
-              <span>{t.common.efficiency}</span>
-              <span>{t.common.availability}</span>
+            <div className="mt-7">
+              <ButtonLink href={localizedPath(locale, "/hosting")} icon={Zap}>
+                {copy.startHosting}
+              </ButtonLink>
             </div>
-            {products.slice(0, 4).map((product) => (
-              <div
-                key={product.id}
-                className="grid gap-3 border-b border-white/10 px-5 py-4 last:border-b-0 md:grid-cols-[1.2fr_0.9fr_0.9fr_0.9fr] md:items-center"
-              >
-                <p className="font-semibold text-white">{product.model}</p>
-                <p className="text-sm text-stone-300">{product.hashRate}</p>
-                <p className="text-sm text-stone-300">{product.efficiency}</p>
-                <StatusBadge status={product.availability} />
+          </MotionReveal>
+          <MotionReveal delay={0.08}>
+            <div className="surface-panel rounded-lg p-5">
+              <p className="text-sm font-semibold uppercase text-gold-500">{copy.hosting.processTitle}</p>
+              <div className="mt-6 grid gap-4">
+                {copy.hosting.flow.map(([step, text], index) => (
+                  <div key={step} className="grid grid-cols-[44px_1fr] gap-4">
+                    <div className="grid size-11 place-items-center rounded-lg border border-gold-500/35 bg-gold-500/10 text-sm font-semibold text-gold-100">
+                      {index + 1}
+                    </div>
+                    <div className="rounded-lg border border-white/10 bg-white/[0.035] p-4">
+                      <h3 className="font-semibold text-white">{step}</h3>
+                      <p className="mt-1 text-sm text-stone-400">{text}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-ink-950 py-16">
-        <div className="section-shell">
-          <SectionHeading title={t.sections.calculator} subtitle={t.pages.calculatorSub} />
-          <div className="mt-8">
-            <MiningCalculator locale={locale} />
-          </div>
+            </div>
+          </MotionReveal>
         </div>
       </section>
 
       <section className="bg-black py-16">
         <div className="section-shell">
-          <SectionHeading title={t.sections.why} subtitle={t.tagline} />
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {t.whyPoints.map((point, index) => {
-              const Icon = benefitIcons[index] || CheckCircle2;
-              return (
-                <MotionReveal key={point} delay={index * 0.04}>
-                  <div className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
-                    <Icon className="size-6 text-gold-500" aria-hidden="true" />
-                    <h3 className="mt-5 text-lg font-semibold text-white">{point}</h3>
+          <SectionHeading eyebrow={copy.shipments.eyebrow} title={copy.shipments.title} subtitle={copy.shipments.subtitle} />
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {copy.shipments.items.map(([batch, country, text], index) => (
+              <MotionReveal key={batch} delay={index * 0.05}>
+                <article className="surface-panel overflow-hidden rounded-lg">
+                  <div className="relative aspect-[16/10]">
+                    <Image src="/images/mining-farm-hero.png" alt={`${batch} shipment to ${country}`} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" style={{ objectPosition: `${30 + index * 20}% center` }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    <Ship className="absolute bottom-4 left-4 size-6 text-gold-500" aria-hidden="true" />
                   </div>
-                </MotionReveal>
-              );
-            })}
+                  <div className="p-5">
+                    <h3 className="text-xl font-semibold text-white">
+                      {batch} <span aria-hidden="true">-&gt;</span> {country}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-stone-400">{text}</p>
+                  </div>
+                </article>
+              </MotionReveal>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-ink-950 py-16">
+      <section className="border-y border-gold-500/12 bg-ink-950 py-16">
         <div className="section-shell">
-          <SectionHeading title={t.sections.gallery} subtitle="Mining farm / warehouse / container / maintenance" />
-          <div className="mt-8 grid gap-4 md:grid-cols-4">
-            {t.gallery.map((item, index) => (
-              <div key={item} className="group relative aspect-[4/5] overflow-hidden rounded-lg border border-gold-500/16 bg-black">
-                <Image
-                  src="/images/mining-farm-hero.png"
-                  alt={item}
-                  fill
-                  sizes="(min-width: 768px) 25vw, 100vw"
-                  className="object-cover opacity-80 transition duration-500 group-hover:scale-105"
-                  style={{ objectPosition: `${25 + index * 18}% center` }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                <p className="absolute bottom-4 left-4 right-4 text-lg font-semibold text-white">{item}</p>
+          <SectionHeading eyebrow={copy.videos.eyebrow} title={copy.videos.title} subtitle={copy.videos.subtitle} />
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {copy.videos.items.map(([title, text], index) => (
+              <div key={title} className="rounded-lg border border-white/10 bg-black/40 p-4">
+                <div className="relative aspect-video overflow-hidden rounded-lg border border-gold-500/18 bg-black">
+                  <Image src="/images/mining-farm-hero.png" alt={title} fill sizes="(min-width: 1280px) 25vw, 50vw" className="object-cover opacity-60" style={{ objectPosition: `${20 + index * 18}% center` }} />
+                  <div className="absolute inset-0 grid place-items-center">
+                    <span className="grid size-12 place-items-center rounded-full border border-gold-500/50 bg-black/70 text-gold-500">
+                      <Play className="ml-0.5 size-5" aria-hidden="true" />
+                    </span>
+                  </div>
+                </div>
+                <h3 className="mt-4 font-semibold text-white">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-stone-400">{text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-gold-500/15 bg-black py-16">
-        <div className="section-shell flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h2 className="text-3xl font-semibold text-white md:text-4xl">{t.sections.cta}</h2>
-            <p className="mt-3 max-w-2xl text-stone-300">{t.sections.ctaSub}</p>
+      <section className="bg-black py-16">
+        <div className="section-shell grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <SectionHeading eyebrow={copy.faq.eyebrow} title={copy.faq.title} subtitle={copy.faq.subtitle} />
+          <div className="grid gap-4">
+            {copy.faq.items.map(([question, answer]) => (
+              <details key={question} className="rounded-lg border border-white/10 bg-white/[0.035] p-5" open>
+                <summary className="cursor-pointer text-lg font-semibold text-white">{question}</summary>
+                <p className="mt-3 text-sm leading-6 text-stone-400">{answer}</p>
+              </details>
+            ))}
           </div>
-          <ButtonLink href={`https://wa.me/${whatsappNumber}`} target="_blank" icon={MessageCircle}>
-            WhatsApp: {whatsappDisplay}
-          </ButtonLink>
+        </div>
+      </section>
+
+      <section className="bg-ink-950 py-16">
+        <div className="section-shell rounded-lg border border-gold-500/20 bg-[linear-gradient(135deg,rgba(212,175,55,0.14),rgba(255,255,255,0.03))] p-6 md:p-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase text-gold-500">{copy.finalCta.eyebrow}</p>
+              <h2 className="mt-3 text-3xl font-semibold text-white md:text-5xl">{copy.finalCta.title}</h2>
+              <p className="mt-4 max-w-2xl text-stone-300">{copy.finalCta.text}</p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
+              <ButtonLink href={localizedPath(locale, "/contact")} icon={ArrowRight}>
+                {copy.getPrice}
+              </ButtonLink>
+              <ButtonLink href={`https://wa.me/${whatsappNumber}`} target="_blank" icon={MessageCircle} variant="secondary">
+                {copy.whatsapp}
+              </ButtonLink>
+            </div>
+          </div>
         </div>
       </section>
     </>
   );
 }
 
-function SectionHeading({ title, subtitle, compact = false }: { title: string; subtitle: string; compact?: boolean }) {
+function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle: string }) {
   return (
-    <div className={compact ? "" : "max-w-3xl"}>
-      <div className="mb-4 h-px w-24 gold-line" />
-      <h2 className={`${compact ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"} font-semibold text-white`}>
-        {title}
-      </h2>
-      <p className="mt-3 text-base leading-7 text-stone-400">{subtitle}</p>
+    <div className="max-w-3xl">
+      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold-500">{eyebrow}</p>
+      <h2 className="mt-3 text-3xl font-semibold text-white md:text-5xl">{title}</h2>
+      <p className="mt-4 text-base leading-7 text-stone-400">{subtitle}</p>
+    </div>
+  );
+}
+
+function Spec({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex justify-between gap-4 border-b border-white/10 pb-3 last:border-b-0">
+      <dt className="text-stone-400">{label}</dt>
+      <dd className="text-right font-semibold text-stone-100">{value}</dd>
+    </div>
+  );
+}
+
+function PhotoProof({ title, caption, position, placeholder }: { title: string; caption: string; position: number; placeholder: string }) {
+  return (
+    <div className="group relative aspect-[4/5] overflow-hidden rounded-lg border border-gold-500/16 bg-black">
+      <Image
+        src="/images/mining-farm-hero.png"
+        alt={title}
+        fill
+        sizes="(min-width: 768px) 25vw, 100vw"
+        className="object-cover opacity-76 transition duration-500 group-hover:scale-105"
+        style={{ objectPosition: `${position}% center` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
+      <div className="absolute bottom-4 left-4 right-4">
+        <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-black/70 px-3 py-1 text-xs font-semibold text-gold-100">
+          <Video className="size-3" aria-hidden="true" />
+          {placeholder}
+        </div>
+        <h3 className="text-lg font-semibold text-white">{title}</h3>
+        <p className="mt-2 text-xs leading-5 text-stone-300">{caption}</p>
+      </div>
     </div>
   );
 }

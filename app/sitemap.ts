@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogArticles, siteUrl } from "@/lib/content";
 import { locales } from "@/lib/i18n";
+import { seoLandingPages } from "@/lib/seo-pages";
 
 const staticPages = ["", "/products", "/hosting", "/mining-calculator", "/about", "/blog", "/contact"];
 
@@ -24,5 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...pages, ...posts];
+  const landingPages = seoLandingPages.map((page) => ({
+    url: `${siteUrl}/${page.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: page.type === "product" ? 0.85 : 0.9
+  }));
+
+  return [...pages, ...posts, ...landingPages];
 }
