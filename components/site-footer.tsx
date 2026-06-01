@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Clock3, Mail, MapPin, MessageCircle, Send } from "lucide-react";
+import { Clock3, Mail, MapPin, MessageCircle, Send, Smartphone } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import { dict, navItems, whatsappDisplay, whatsappNumber } from "@/lib/content";
@@ -7,8 +7,9 @@ import { Logo } from "./logo";
 
 export function SiteFooter({ locale }: { locale: Locale }) {
   const t = dict[locale];
-  const email = "sales@zhongyuan-tech.shop";
-  const telegram = "@ZhongyuanTech";
+  const email = "1710915394@qq.com";
+  const telegram = "@jackeik";
+  const wechat = "13674067667";
 
   return (
     <footer className="border-t border-gold-500/15 bg-black">
@@ -68,6 +69,10 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <p className="flex items-center gap-2">
               <Send className="size-4 text-gold-500" aria-hidden="true" />
               Telegram: {telegram}
+            </p>
+            <p className="flex items-center gap-2">
+              <Smartphone className="size-4 text-gold-500" aria-hidden="true" />
+              WeChat: {wechat}
             </p>
             <p className="flex items-center gap-2">
               <MapPin className="size-4 text-gold-500" aria-hidden="true" />

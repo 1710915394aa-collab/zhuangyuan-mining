@@ -3,36 +3,45 @@
 import { Calculator, Coins, Gauge, PlugZap } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Locale } from "@/lib/i18n";
-import { dict } from "@/lib/content";
 
 type CalculatorState = {
-  btcPrice: number;
-  hashrate: number;
-  power: number;
-  electricity: number;
-  machinePrice: number;
+  btcPrice: string;
+  hashrate: string;
+  power: string;
+  electricity: string;
+  machinePrice: string;
 };
 
 const defaults: CalculatorState = {
-  btcPrice: 68000,
-  hashrate: 200,
-  power: 3500,
-  electricity: 0.04,
-  machinePrice: 4200
+  btcPrice: "68000",
+  hashrate: "200",
+  power: "3500",
+  electricity: "0.04",
+  machinePrice: "4200"
+};
+
+const parseNumber = (value: string) => {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : 0;
 };
 
 export function MiningCalculator({ locale }: { locale: Locale }) {
   const [values, setValues] = useState<CalculatorState>(defaults);
-  const t = dict[locale];
   const estimatedBtcPerThDay = 0.00000045;
 
   const results = useMemo(() => {
-    const powerKw = values.power / 1000;
-    const dailyRevenue = values.hashrate * estimatedBtcPerThDay * values.btcPrice;
-    const dailyPowerCost = powerKw * 24 * values.electricity;
+    const btcPrice = parseNumber(values.btcPrice);
+    const hashrate = parseNumber(values.hashrate);
+    const power = parseNumber(values.power);
+    const electricity = parseNumber(values.electricity);
+    const machinePrice = parseNumber(values.machinePrice);
+
+    const powerKw = power / 1000;
+    const dailyRevenue = hashrate * estimatedBtcPerThDay * btcPrice;
+    const dailyPowerCost = powerKw * 24 * electricity;
     const dailyProfit = dailyRevenue - dailyPowerCost;
     const monthlyProfit = dailyProfit * 30;
-    const roiDays = dailyProfit > 0 ? values.machinePrice / dailyProfit : Number.POSITIVE_INFINITY;
+    const roiDays = dailyProfit > 0 ? machinePrice / dailyProfit : Number.POSITIVE_INFINITY;
 
     return {
       dailyRevenue,
@@ -46,7 +55,7 @@ export function MiningCalculator({ locale }: { locale: Locale }) {
   const updateValue = (key: keyof CalculatorState, value: string) => {
     setValues((current) => ({
       ...current,
-      [key]: Number(value)
+      [key]: value
     }));
   };
 
@@ -90,11 +99,15 @@ export function MiningCalculator({ locale }: { locale: Locale }) {
     ["machinePrice", inputLabels.machinePrice, 100, "$"]
   ];
 
+  const roiValue = Number.isFinite(results.roiDays)
+    ? `${Math.ceil(results.roiDays)} ${locale === "zh" ? "天" : "days"}`
+    : "-";
+
   const cards = [
     [outputLabels.dailyProfit, `$${results.dailyProfit.toFixed(2)}`, Coins],
     [outputLabels.monthlyProfit, `$${results.monthlyProfit.toFixed(2)}`, Calculator],
     [outputLabels.powerCost, `$${results.dailyPowerCost.toFixed(2)}`, PlugZap],
-    [outputLabels.roi, Number.isFinite(results.roiDays) ? `${Math.ceil(results.roiDays)} days` : "-", Gauge]
+    [outputLabels.roi, roiValue, Gauge]
   ];
 
   return (

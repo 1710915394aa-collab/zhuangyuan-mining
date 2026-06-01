@@ -1,4 +1,4 @@
-import { MessageCircle, Send } from "lucide-react";
+import { Mail, MessageCircle, Send, Smartphone } from "lucide-react";
 import { notFound } from "next/navigation";
 import { InquiryForm } from "@/components/inquiry-form";
 import { ButtonLink } from "@/components/button-link";
@@ -31,6 +31,9 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
   const locale = rawLocale as Locale;
   const t = dict[locale];
   const query = searchParams ? await searchParams : {};
+  const email = "1710915394@qq.com";
+  const telegram = "@jackeik";
+  const wechat = "13674067667";
 
   return (
     <div className="bg-ink-950">
@@ -51,6 +54,20 @@ export default async function ContactPage({ params, searchParams }: PageProps) {
               <ButtonLink href={`https://wa.me/${whatsappNumber}`} target="_blank" icon={MessageCircle}>
                 {t.common.whatsappContact}
               </ButtonLink>
+            </div>
+            <div className="mt-6 grid gap-3 text-sm text-stone-300">
+              <p className="flex items-center gap-2">
+                <Mail className="size-4 text-gold-500" aria-hidden="true" />
+                Email: {email}
+              </p>
+              <p className="flex items-center gap-2">
+                <Send className="size-4 text-gold-500" aria-hidden="true" />
+                Telegram: {telegram}
+              </p>
+              <p className="flex items-center gap-2">
+                <Smartphone className="size-4 text-gold-500" aria-hidden="true" />
+                WeChat: {wechat}
+              </p>
             </div>
           </div>
         </div>

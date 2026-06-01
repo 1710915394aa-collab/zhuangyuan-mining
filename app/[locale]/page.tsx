@@ -9,7 +9,6 @@ import {
   Headphones,
   MessageCircle,
   MonitorCheck,
-  Play,
   ShieldCheck,
   Ship,
   TestTube2,
@@ -30,6 +29,17 @@ type PageProps = {
 const hotMinerIds = ["s21-200t", "s19k-pro-120t", "whatsminer-m60s", "s21-xp"];
 const trustIcons = [Boxes, TestTube2, Clock3, Globe2, Zap, Headphones];
 const hostingIcons = [Zap, ShieldCheck, MonitorCheck, Wrench, Globe2];
+const realSiteImages = [
+  "/images/stock/warehouse-pallets.jpg",
+  "/images/stock/warehouse-aisle.jpg",
+  "/images/stock/logistics-boxes.jpg"
+];
+const verificationVideos = [
+  "/videos/stock/data-center-racks.mp4",
+  "/videos/stock/network-switches.mp4",
+  "/videos/stock/server-operation.mp4",
+  "/videos/stock/server-room-walkthrough.mp4"
+];
 
 const homeCopy = {
   en: {
@@ -117,14 +127,14 @@ const homeCopy = {
       ]
     },
     videos: {
-      eyebrow: "Video Verification",
-      title: "Real Miner Testing Videos",
-      subtitle: "Video proof reduces buyer risk. Add real videos for machine startup, hashrate testing, packaging and warehouse walkthrough.",
+      eyebrow: "Facility Video",
+      title: "Professional Mining & Hosting Environment",
+      subtitle: "Clean facility visuals for overseas buyers. Real machine inspection and shipment videos can be provided during the quotation process.",
       items: [
-        ["Miner startup video", "Power-on, fan startup and basic status check"],
-        ["Hashrate testing video", "Live hashrate screen and pool-side verification"],
-        ["Packaging video", "Foam protection, carton sealing and pallet loading"],
-        ["Warehouse walkthrough", "Real warehouse view before order confirmation"]
+        ["Data center environment", "High-density rack operation and controlled facility visuals"],
+        ["Network infrastructure", "Switching, monitoring and connectivity environment"],
+        ["Hosting operation", "Continuous server operation for managed mining deployment"],
+        ["Facility walkthrough", "Professional infrastructure view for hosting customers"]
       ]
     },
     faq: {
@@ -225,14 +235,14 @@ const homeCopy = {
       ]
     },
     videos: {
-      eyebrow: "视频验机",
-      title: "真实矿机测试视频",
-      subtitle: "视频证明可以降低买家风险。可展示开机、算力测试、包装和仓库走访视频。",
+      eyebrow: "矿场视频",
+      title: "专业矿场与托管环境",
+      subtitle: "面向海外买家的高质感矿场视觉展示。真实验机和发货视频可在询价沟通时单独提供。",
       items: [
-        ["矿机开机视频", "开机、风扇启动和基础状态检查"],
-        ["算力测试视频", "实时算力界面和矿池端验证"],
-        ["包装视频", "泡棉保护、纸箱封装和托盘装载"],
-        ["仓库走访视频", "下单确认前展示真实仓库情况"]
+        ["数据中心环境", "高密度机柜运行与稳定机房环境展示"],
+        ["网络基础设施", "交换设备、监控系统和联网环境展示"],
+        ["托管运行环境", "面向矿机托管的连续运行基础设施"],
+        ["矿场环境走访", "为托管客户展示更专业的基础设施形象"]
       ]
     },
     faq: {
@@ -393,7 +403,14 @@ export default async function HomePage({ params }: PageProps) {
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-4">
             {copy.proofPhotos.map(([title, caption], index) => (
-              <PhotoProof key={title} title={title} caption={caption} position={20 + index * 20} placeholder={copy.placeholder} />
+              <PhotoProof
+                key={title}
+                title={title}
+                caption={caption}
+                position={20 + index * 20}
+                placeholder={copy.placeholder}
+                src={realSiteImages[index % realSiteImages.length]}
+              />
             ))}
           </div>
         </div>
@@ -488,7 +505,7 @@ export default async function HomePage({ params }: PageProps) {
               <MotionReveal key={batch} delay={index * 0.05}>
                 <article className="surface-panel overflow-hidden rounded-lg">
                   <div className="relative aspect-[16/10]">
-                    <Image src="/images/mining-farm-hero.png" alt={`${batch} shipment to ${country}`} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" style={{ objectPosition: `${30 + index * 20}% center` }} />
+                    <Image src={realSiteImages[index % realSiteImages.length]} alt={`${batch} shipment to ${country}`} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" style={{ objectPosition: `${30 + index * 20}% center` }} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                     <Ship className="absolute bottom-4 left-4 size-6 text-gold-500" aria-hidden="true" />
                   </div>
@@ -512,12 +529,17 @@ export default async function HomePage({ params }: PageProps) {
             {copy.videos.items.map(([title, text], index) => (
               <div key={title} className="rounded-lg border border-white/10 bg-black/40 p-4">
                 <div className="relative aspect-video overflow-hidden rounded-lg border border-gold-500/18 bg-black">
-                  <Image src="/images/mining-farm-hero.png" alt={title} fill sizes="(min-width: 1280px) 25vw, 50vw" className="object-cover opacity-60" style={{ objectPosition: `${20 + index * 18}% center` }} />
-                  <div className="absolute inset-0 grid place-items-center">
-                    <span className="grid size-12 place-items-center rounded-full border border-gold-500/50 bg-black/70 text-gold-500">
-                      <Play className="ml-0.5 size-5" aria-hidden="true" />
-                    </span>
-                  </div>
+                  <video
+                    className="h-full w-full object-cover"
+                    src={verificationVideos[index]}
+                    aria-label={title}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="none"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
                 </div>
                 <h3 className="mt-4 font-semibold text-white">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-stone-400">{text}</p>
@@ -583,11 +605,23 @@ function Spec({ label, value }: { label: string; value: string }) {
   );
 }
 
-function PhotoProof({ title, caption, position, placeholder }: { title: string; caption: string; position: number; placeholder: string }) {
+function PhotoProof({
+  title,
+  caption,
+  position,
+  placeholder,
+  src
+}: {
+  title: string;
+  caption: string;
+  position: number;
+  placeholder: string;
+  src: string;
+}) {
   return (
     <div className="group relative aspect-[4/5] overflow-hidden rounded-lg border border-gold-500/16 bg-black">
       <Image
-        src="/images/mining-farm-hero.png"
+        src={src}
         alt={title}
         fill
         sizes="(min-width: 768px) 25vw, 100vw"
