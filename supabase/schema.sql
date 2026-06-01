@@ -49,9 +49,16 @@ create table if not exists public.inquiries (
   message text,
   locale text,
   source text not null default 'website',
+  page_url text,
+  user_agent text,
+  referrer text,
   status text not null default 'new' check (status in ('new', 'contacted', 'quoted', 'closed')),
   created_at timestamptz not null default now()
 );
+
+alter table public.inquiries add column if not exists page_url text;
+alter table public.inquiries add column if not exists user_agent text;
+alter table public.inquiries add column if not exists referrer text;
 
 alter table public.products enable row level security;
 alter table public.blog_posts enable row level security;

@@ -57,7 +57,7 @@ const homeCopy = {
     quote: "Quote",
     yes: "Yes",
     no: "No",
-    placeholder: "Placeholder",
+    mediaLabel: "Facility media",
     heroBadges: ["Daily Updated Price", "Global Shipping", "Hosting Available", "Video Test Before Delivery"],
     heroStats: [
       ["Today quote", "S21 / S19 / M60"],
@@ -119,7 +119,7 @@ const homeCopy = {
       eyebrow: "Recent Shipments",
       title: "Shipment Proof For Real Buyers",
       subtitle:
-        "Social proof style examples for overseas mining customers. Replace placeholders with real shipment photos as orders are completed.",
+        "Professional delivery and logistics examples for overseas mining customers, with order-specific inspection proof available during quotation.",
       items: [
         ["40x S21", "Kazakhstan", "Air shipment with pre-delivery testing"],
         ["120x S19k Pro", "Ethiopia", "Bulk packing and hosting deployment support"],
@@ -168,7 +168,7 @@ const homeCopy = {
     quote: "询价",
     yes: "是",
     no: "否",
-    placeholder: "图片占位",
+    mediaLabel: "实景素材",
     heroBadges: ["每日更新价格", "全球发货", "支持托管", "发货前视频测试"],
     heroStats: [
       ["今日报价", "S21 / S19 / M60"],
@@ -227,7 +227,7 @@ const homeCopy = {
     shipments: {
       eyebrow: "近期发货",
       title: "给真实买家的发货证明",
-      subtitle: "为海外矿机客户建立社会证明。后续可替换为真实订单发货照片。",
+      subtitle: "面向海外矿机客户的专业交付与物流展示。具体订单的验机和发货证明可在询价沟通时提供。",
       items: [
         ["40 台 S21", "哈萨克斯坦", "空运发货，发货前完成测试"],
         ["120 台 S19k Pro", "埃塞俄比亚", "批量包装，并支持托管部署"],
@@ -310,6 +310,18 @@ export default async function HomePage({ params }: PageProps) {
     sameAs: [`https://wa.me/${whatsappNumber}`]
   };
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Zhongyuan Technology",
+    url: siteUrl,
+    inLanguage: locale === "zh" ? "zh-CN" : "en-US",
+    publisher: {
+      "@type": "Organization",
+      name: "Zhongyuan Technology"
+    }
+  };
+
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -326,6 +338,7 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <section className="relative isolate overflow-hidden bg-black">
@@ -408,7 +421,7 @@ export default async function HomePage({ params }: PageProps) {
                 title={title}
                 caption={caption}
                 position={20 + index * 20}
-                placeholder={copy.placeholder}
+                mediaLabel={copy.mediaLabel}
                 src={realSiteImages[index % realSiteImages.length]}
               />
             ))}
@@ -609,13 +622,13 @@ function PhotoProof({
   title,
   caption,
   position,
-  placeholder,
+  mediaLabel,
   src
 }: {
   title: string;
   caption: string;
   position: number;
-  placeholder: string;
+  mediaLabel: string;
   src: string;
 }) {
   return (
@@ -632,7 +645,7 @@ function PhotoProof({
       <div className="absolute bottom-4 left-4 right-4">
         <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-black/70 px-3 py-1 text-xs font-semibold text-gold-100">
           <Video className="size-3" aria-hidden="true" />
-          {placeholder}
+          {mediaLabel}
         </div>
         <h3 className="text-lg font-semibold text-white">{title}</h3>
         <p className="mt-2 text-xs leading-5 text-stone-300">{caption}</p>

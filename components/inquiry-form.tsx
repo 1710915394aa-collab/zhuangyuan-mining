@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { MessageCircle, Send } from "lucide-react";
 import { type FormEvent, useState } from "react";
@@ -23,6 +23,7 @@ export function InquiryForm({ locale, kind, defaultProduct = "" }: InquiryFormPr
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("submitting");
+    setMessage("");
     const formData = new FormData(event.currentTarget);
     const payload = Object.fromEntries(formData.entries());
 
@@ -30,15 +31,23 @@ export function InquiryForm({ locale, kind, defaultProduct = "" }: InquiryFormPr
       const response = await fetch("/api/inquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...payload, kind, locale, source: "website" })
+        body: JSON.stringify({
+          ...payload,
+          kind,
+          locale,
+          source: "website",
+          page_url: typeof window !== "undefined" ? window.location.href : ""
+        })
       });
+      const result = (await response.json().catch(() => null)) as { ok?: boolean } | null;
 
-      if (!response.ok) {
+      if (!response.ok || !result?.ok) {
         throw new Error("request failed");
       }
 
       setStatus("success");
       setMessage(t.common.sent);
+      event.currentTarget.reset();
     } catch {
       setStatus("error");
       setMessage(t.common.failed);
@@ -51,6 +60,7 @@ export function InquiryForm({ locale, kind, defaultProduct = "" }: InquiryFormPr
   return (
     <form onSubmit={handleSubmit} className="surface-panel rounded-lg p-5">
       <p className="mb-5 text-sm leading-6 text-stone-400">{intro}</p>
+      <input type="text" name="company_url" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label={t.common.name} name="name" required />
         <Field label={t.common.country} name="country" />
@@ -135,3 +145,4 @@ function Field({
     </label>
   );
 }
+

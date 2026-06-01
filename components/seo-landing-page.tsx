@@ -20,8 +20,6 @@ export function SeoLandingPageView({ page }: { page: SeoLandingPage }) {
           offers: {
             "@type": "Offer",
             availability: "https://schema.org/InStock",
-            priceCurrency: "USD",
-            price: "0",
             description: "Quote-based daily ASIC miner price"
           }
         }

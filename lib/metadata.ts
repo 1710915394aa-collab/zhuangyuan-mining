@@ -13,6 +13,7 @@ type MetadataInput = {
 export function createMetadata({ locale, path = "", title, description, keywords = [] }: MetadataInput): Metadata {
   const normalizedPath = path ? `/${locale}${path}` : `/${locale}`;
   const url = `${siteUrl}${normalizedPath}`;
+  const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
   return {
     metadataBase: new URL(siteUrl),
@@ -26,6 +27,11 @@ export function createMetadata({ locale, path = "", title, description, keywords
         "zh-CN": `${siteUrl}/zh${path}`
       }
     },
+    verification: googleVerification
+      ? {
+          google: googleVerification
+        }
+      : undefined,
     openGraph: {
       title,
       description,
@@ -47,6 +53,7 @@ export function createMetadata({ locale, path = "", title, description, keywords
       title,
       description,
       images: ["/images/mining-farm-hero.png"]
-    }
+    },
+    category: "technology"
   };
 }

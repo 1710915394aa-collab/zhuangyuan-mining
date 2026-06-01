@@ -12,6 +12,9 @@ export type InquiryInsert = {
   message?: string;
   locale?: string;
   source?: string;
+  page_url?: string;
+  user_agent?: string;
+  referrer?: string;
 };
 
 export function getSupabaseAdmin() {
